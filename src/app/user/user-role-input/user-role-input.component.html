@@ -1,0 +1,26 @@
+<div id = "userInput">
+
+    <form (ngSubmit)="onSubmit()" #roleForm="ngForm">
+
+        <input [(ngModel)]="inputName"  name = "inputName" required
+        type="text" id="fname" placeholder="First Name"><br><br>
+
+        
+        
+        <select [(ngModel)]="inputRole" required name="inputRole" id="roleDropdown">
+            <option value="">Select your Role</option>
+            <option *ngFor="let element of roles" [value]="element">{{element}}</option>
+        </select> <br><br>
+
+        <button type="submit" [disabled]="!roleForm.form.valid">Submit</button>
+
+        <div [hidden]="roleForm.valid || roleForm.pristine">
+            <p>Fill all fields.</p>
+        </div>
+        
+        <div [hidden]="!roleForm.submitted">
+            <p>{{inputRole}}  {{inputName}}</p>
+        </div>
+        
+    </form>
+</div>
