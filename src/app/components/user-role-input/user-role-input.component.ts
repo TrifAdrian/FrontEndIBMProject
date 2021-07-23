@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { UserMockService,User } from '../user-mock.service';
-import { UserManageService } from '../user-manage.service';
+import { UserMockService } from '../../services/user-mock.service';
+import { UserManageService } from '../../services/user-manage.service';
 
 @Component({
   selector: 'app-user-role-input',

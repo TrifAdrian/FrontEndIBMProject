@@ -18,9 +18,11 @@
             <p>Fill all fields.</p>
         </div>
         
-        <div [hidden]="!roleForm.submitted">
+        <div [hidden]="!roleForm.submitted || !roleForm.valid">
             <p>{{inputRole}}  {{inputName}}</p>
         </div>
         
     </form>
 </div>
+
+<router-outlet></router-outlet>
