@@ -1,0 +1,39 @@
+<div id="createForm" class="toggleForm">
+
+    <form (ngSubmit)="onSubmit()" #roleForm="ngForm">
+
+        <input [(ngModel)] = "inputName" name = "inputName" required
+        type="text" placeholder="Class Name"><br><br>
+        <input [(ngModel)] = "inputYear" name = "inputYear" required
+        type="text" placeholder="Class Year"><br><br>
+
+        <select [(ngModel)] = "inputSection" required name="inputSection" id="sectionDropdown">
+            <option value="">Select the Class section</option>
+            <option *ngFor="let element of sections" [value]="element">{{element}}</option>
+        </select> <br><br>
+
+        <select [(ngModel)] = "inputTeacher" required name="inputTeacher" id="teacherDropdown">
+            <option value="">Select the Class teacher</option>
+            <option *ngFor="let element of teachers" [value]="element">{{element}}</option>
+        </select> <br><br>
+
+        <label for="inputDate">Class Date:</label>
+        <input type="date" id="inputDate" /><br><br>
+
+        <label for="inputStart">Start of Class:</label><br>
+        <input type="time" id = "inputStart"><br>
+        <label for="inputEnd">End of Class:</label><br>
+        <input type="time" id = "inputEnd">
+        <br><br>
+
+    
+
+        <button type="submit" [disabled]="!roleForm.form.valid">Submit</button>
+
+        <div [hidden]="roleForm.valid || roleForm.pristine">
+            <br>
+            <p>Fill all fields.</p>
+        </div>
+        
+    </form>
+</div>
