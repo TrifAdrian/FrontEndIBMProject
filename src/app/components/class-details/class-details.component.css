@@ -1,0 +1,13 @@
+#classDetails{
+    margin-left: 60%;
+    width: auto;
+    position:absolute;
+    border: 2px solid black;
+    background-color: lightsteelblue;
+    z-index: 1;
+
+    padding-left: 3ex;
+    padding-right: 3ex;
+    padding-bottom: 3ex;
+    padding-top: 3ex;
+}
