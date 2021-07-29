@@ -5,6 +5,7 @@ import { UserMockService } from 'src/app/services/user-mock.service';
 @Component({
   selector: 'app-class-creation',
   templateUrl: './class-creation.component.html',
+
   styleUrls: ['./class-creation.component.css','../toolbar/toolbar.component.css']
 })
 export class ClassCreationComponent implements OnInit {
@@ -33,8 +34,6 @@ export class ClassCreationComponent implements OnInit {
     .subscribe(sections => this.sections = sections);
   }
 
-  onSubmit() : void{
-
-  }
+  onSubmit() : void{ }
 
 }

@@ -9,10 +9,13 @@ export class ScheduleComponent implements OnInit {
 
   constructor() { }
 
+
   viewDate: Date = new Date();
 
   ngOnInit(): void {
 
+  }
+  ngOnInit(): void {
   }
 
 

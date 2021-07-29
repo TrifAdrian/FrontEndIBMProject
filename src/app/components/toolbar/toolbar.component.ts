@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+
 import { UserMockService } from 'src/app/services/user-mock.service';
 import { ToolbarToggleService } from '../../services/toolbar-toggle.service';
 
@@ -8,7 +9,6 @@ import { ToolbarToggleService } from '../../services/toolbar-toggle.service';
   styleUrls: ['./toolbar.component.css']
 })
 export class ToolbarComponent implements OnInit {
-
   constructor(private toggleService: ToolbarToggleService, private mockUser : UserMockService) { }
 
   ngOnInit(): void {
@@ -32,6 +32,10 @@ export class ToolbarComponent implements OnInit {
     this.displayCreate = this.toggleService.getElement(1);
     this.displayInfo = this.toggleService.getElement(2);
     this.ngOnInit();
+
+  constructor() { }
+
+  ngOnInit(): void {
   }
 
 }
