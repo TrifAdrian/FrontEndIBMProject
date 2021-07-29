@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+<<<<<<< HEAD
 import { UserMockService } from 'src/app/services/user-mock.service';
 import { ToolbarToggleService } from '../../services/toolbar-toggle.service';
+=======
+>>>>>>> 123abfa13d24fc4172096646fce46cd17736cb7c
 
 @Component({
   selector: 'app-toolbar',
@@ -9,6 +12,7 @@ import { ToolbarToggleService } from '../../services/toolbar-toggle.service';
 })
 export class ToolbarComponent implements OnInit {
 
+<<<<<<< HEAD
   constructor(private toggleService: ToolbarToggleService, private mockUser : UserMockService) { }
 
   ngOnInit(): void {
@@ -32,6 +36,11 @@ export class ToolbarComponent implements OnInit {
     this.displayCreate = this.toggleService.getElement(1);
     this.displayInfo = this.toggleService.getElement(2);
     this.ngOnInit();
+=======
+  constructor() { }
+
+  ngOnInit(): void {
+>>>>>>> 123abfa13d24fc4172096646fce46cd17736cb7c
   }
 
 }

@@ -9,11 +9,14 @@ import { ScheduleComponent } from './components/schedule/schedule.component';
 import { ClassDetailsComponent } from './components/class-details/class-details.component';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { ClassCreationComponent } from './components/class-creation/class-creation.component';
+<<<<<<< HEAD
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatButtonModule} from '@angular/material/button';
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns'; 
+=======
+>>>>>>> 123abfa13d24fc4172096646fce46cd17736cb7c
 
 @NgModule({
   declarations: [

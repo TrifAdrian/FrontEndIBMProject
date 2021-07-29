@@ -8,6 +8,7 @@ export class UserMockService {
 
   constructor() { }
 
+<<<<<<< HEAD
   user : User = new User("","","");
   
   getSavedUser() : User{
@@ -39,10 +40,13 @@ export class UserMockService {
 
   }
 
+=======
+>>>>>>> 123abfa13d24fc4172096646fce46cd17736cb7c
   getArrayRoles():Observable<string[]>
   {
     return of(["Student","Teacher","Admin"]);
   }
+<<<<<<< HEAD
 }
 
 export class User{
@@ -63,5 +67,8 @@ export class User{
     return arg == null || arg == "";
 
   }
+=======
+
+>>>>>>> 123abfa13d24fc4172096646fce46cd17736cb7c
 }
 
