@@ -1,0 +1,33 @@
+#toolbar{
+    font-size: 2.5ex;
+    background-color:lightsteelblue;
+}
+
+#toolbar p{
+    margin-right: 10ex;
+}
+
+.toolbarButton
+{
+    background-color:orange;
+    margin-right: 2ex;
+}
+
+#rolesButton{
+    background-color:orange;
+    margin-right: 2ex;
+}
+
+.toggleForm{
+    z-index: 1;
+    position: absolute;
+    background-color:lightsteelblue;
+    width:30ex;
+    margin-left: 32ex;
+    padding-left: 3ex;
+    padding-right: 3ex;
+    padding-bottom: 3ex;
+    padding-top: 3ex;
+    border: 2px solid black;
+    
+}
