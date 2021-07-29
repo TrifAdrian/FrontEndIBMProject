@@ -1,13 +1,15 @@
-<div id = "userInput">
+<div class="toggleForm">
 
     <form (ngSubmit)="onSubmit()" #roleForm="ngForm">
 
-        <input [(ngModel)]="inputName"  name = "inputName" required
-        type="text" id="fname" placeholder="First Name"><br><br>
+        <input [(ngModel)] = "inputFirst" name = "inputFirst" required
+        type="text" id="fname" placeholder="First Name" value={{inputFirst}}><br><br>
+        <input [(ngModel)] = "inputLast" name = "inputLast" required
+        type="text" id="lname" placeholder="Last Name" value={{inputLast}}><br><br>
 
         
         
-        <select [(ngModel)]="inputRole" required name="inputRole" id="roleDropdown">
+        <select [(ngModel)] = "inputRole" required name="inputRole" id="roleDropdown">
             <option value="">Select your Role</option>
             <option *ngFor="let element of roles" [value]="element">{{element}}</option>
         </select> <br><br>
@@ -15,13 +17,17 @@
         <button type="submit" [disabled]="!roleForm.form.valid">Submit</button>
 
         <div [hidden]="roleForm.valid || roleForm.pristine">
+            <br>
             <p>Fill all fields.</p>
         </div>
         
+<<<<<<< HEAD:src/app/components/user-role-input/user-role-input.component.html
+=======
         <div [hidden]="!roleForm.submitted || !roleForm.valid">
             <p>{{inputRole}}  {{inputName}}</p>
         </div>
         
+>>>>>>> 123abfa13d24fc4172096646fce46cd17736cb7c:src/app/user/user-role-input/user-role-input.component.html
     </form>
 </div>
 
