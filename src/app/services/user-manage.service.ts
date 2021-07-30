@@ -5,7 +5,9 @@ import { Injectable, Input } from '@angular/core';
 })
 export class UserManageService {
 
-  @Input() name?: string;
 
   constructor() { }
+
 }
+
+

@@ -1,0 +1,43 @@
+#toolbar{
+    font-size: 35px;
+    font-weight: 900;
+    font-family:'Didot';
+    color:rgb(68, 151, 130);
+    background-color:rgb(14, 54, 48);
+    
+}
+
+#toolbar p{
+    margin-right: 5ex;
+    margin-top: 1ex;
+}
+
+.toolbarButton
+{   
+    font-weight: bold;
+    font-variant: small-caps;
+    font-family:'Trebuchet MS';
+    color:rgb(14, 54, 48);
+    background-color:rgb(68, 151, 130);
+    margin-right: 5ex;
+}
+
+#rolesButton{
+    background-color:rgb(68, 151, 130);
+    margin-right: 5ex;
+}
+
+.toggleForm{
+    z-index: 1;
+    position: absolute;
+    background-color:rgb(68, 151, 130);
+    width:30ex;
+    margin-left: 50ex;
+    padding-left: 3ex;
+    padding-right: 3ex;
+    padding-bottom: 3ex;
+    padding-top: 3ex;
+    border: 2px solid black;
+
+    
+}
