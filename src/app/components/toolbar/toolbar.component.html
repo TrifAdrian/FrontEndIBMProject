@@ -1,9 +1,9 @@
 <mat-toolbar id="toolbar"> 
     <p>Check-in Platform </p>
 
-    <button class="toolbarButton" id="rolesButton"
+    <button class="toolbarButton"
      mat-raised-button (click)="toggleWindow(0)" >Update Role</button>
-    <button *ngIf="userRole != 'Student' && userRole != null" class="toolbarButton" id="createButton"
+    <button *ngIf="userRole != 'Student' && userRole != null" class="toolbarButton"
      mat-raised-button (click)="toggleWindow(1)" >Create Class</button>
 </mat-toolbar>
 

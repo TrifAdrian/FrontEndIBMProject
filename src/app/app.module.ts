@@ -12,8 +12,6 @@ import { ClassCreationComponent } from './components/class-creation/class-creati
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatButtonModule} from '@angular/material/button';
-import { CalendarModule, DateAdapter } from 'angular-calendar';
-import { adapterFactory } from 'angular-calendar/date-adapters/date-fns'; 
 
 @NgModule({
   declarations: [
@@ -31,7 +29,6 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
     MatToolbarModule,
     BrowserAnimationsModule,
     MatButtonModule,
-    CalendarModule.forRoot({ provide: DateAdapter, useFactory: adapterFactory })
   ],
   providers: [],
   bootstrap: [AppComponent]

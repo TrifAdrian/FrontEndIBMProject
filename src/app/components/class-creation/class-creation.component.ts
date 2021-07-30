@@ -32,9 +32,9 @@ export class ClassCreationComponent implements OnInit {
     this.classMock.getArraySections()
     .subscribe(sections => this.sections = sections);
   }
-
   onSubmit() : void{
 
   }
+
 
 }

@@ -7,7 +7,6 @@ import { Observable, of } from 'rxjs';
 export class UserMockService {
 
   constructor() { }
-
   user : User = new User("","","");
   
   getSavedUser() : User{

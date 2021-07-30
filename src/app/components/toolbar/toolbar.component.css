@@ -19,11 +19,10 @@
     font-family:'Trebuchet MS';
     color:rgb(14, 54, 48);
     background-color:rgb(68, 151, 130);
-    margin-right: 5ex;
+    margin-left: 3ex;
 }
 
-#rolesButton{
-    background-color:rgb(68, 151, 130);
+#toolbar p{
     margin-right: 5ex;
 }
 
@@ -38,6 +37,4 @@
     padding-bottom: 3ex;
     padding-top: 3ex;
     border: 2px solid black;
-
-    
 }
