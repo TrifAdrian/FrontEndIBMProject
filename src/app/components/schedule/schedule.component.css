@@ -1,46 +1,27 @@
-#previousbtn{
-    background-color: rgb(14, 54, 48);
-    color:rgb(68, 151, 130);
-    margin-left: 1px;
-    margin-top: 10px;
-    margin-right: 0px;
-    font-weight: 800;
+
+.calendar{
+    border:3px solid; 
+    border-collapse: separate;
+    height: 360px;
+    width: 100%;
+    border-color: black;
     font-family:'Trebuchet MS';
     font-variant: small-caps;
-    text-align: center;
-    border: none;
-    width: 100px;
-}
-#nextbtn{
-    background-color: rgb(68, 151, 130);
-    color: rgb(14, 54, 48);
-    margin-left: 0px;
-    margin-top: 10px;
-    font-weight: 800;
-    font-family:'Trebuchet MS';
-    font-variant: small-caps;
-    border: none;
-    width: 100px;
-
-}
-#centerdate{
-    margin-top: 10px;
-    margin-left: 100px;
-    color: rgb(14, 54, 48);
-    font-weight:bold;
-    font-family:'Didot';
-    font-size: x-large;
-    
 }
 
-#buttongroup{
-    margin-left: -100px;
+#days{
+    background-color: rgb(123, 202, 182);
 }
 
-#back{
-    background-color:rgb(145, 212, 196);
+.column{
+    text-align:center;
+    width: 20%;
 }
 
-#fullcalendar{
-    width: 1200px;
+#coursecell{
+    background-color: rgb(164, 214, 203);
+}
+
+#table{
+    width: 100%;
 }
