@@ -13,25 +13,16 @@ export class ToolbarComponent implements OnInit {
 
   ngOnInit(): void {
     this.userRole = this.mockUser.getUserRole();
+    this.whatToDisplay = this.toggleService.activeWindow;
   }
 
-  displayRole : boolean = false;
-  displayCreate : boolean = false;
-  displayInfo : boolean = false;
   userRole : string|null = null ;
 
-  toggleWindow(index : number)
-  {
-    this.toggleService.toggleElement(index);
-    this.updateValuesRefresh();
-  }
+  whatToDisplay : string = "";
 
-  updateValuesRefresh()
+  toggle(name : string)
   {
-    this.displayRole = this.toggleService.getElement(0);
-    this.displayCreate = this.toggleService.getElement(1);
-    this.displayInfo = this.toggleService.getElement(2);
+    this.toggleService.toggleWindow(name);
     this.ngOnInit();
-
   }
 }

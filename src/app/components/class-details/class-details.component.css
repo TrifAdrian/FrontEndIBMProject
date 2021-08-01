@@ -1,9 +1,8 @@
 #classDetails{
     margin-left: 60%;
-    width: auto;
-    position:absolute;
+    position: absolute;
     border: 2px solid black;
-    background-color: lightsteelblue;
+    background-color:rgb(68, 151, 130);
     z-index: 1;
 
     padding-left: 3ex;

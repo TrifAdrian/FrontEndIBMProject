@@ -1,0 +1,19 @@
+.scheduleEntry{
+    border: 2px solid black;
+    width: 20%;
+    display: flex;
+    
+}
+
+.scheduleEntry p{
+    margin-top: 2ex;
+    margin-left: 2ex;
+}
+
+#time{
+    margin-top: 4ex;
+    margin-right: 2ex;
+}
+
+
+

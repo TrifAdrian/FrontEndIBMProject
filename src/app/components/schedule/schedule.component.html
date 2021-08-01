@@ -1,5 +1,12 @@
 <div id="fullcalendar">
+    <span *ngIf="whatToDisplay == 'classInfo'">
+        <app-class-details></app-class-details>
+    </span>
 
+    <div *ngFor="let element of classes" (click) = "displayClass(element.id)">
+        <app-schedule-entry
+         [classroom] = "element"></app-schedule-entry>
+    </div>
 </div>
 
 
