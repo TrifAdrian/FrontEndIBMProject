@@ -1,7 +1,31 @@
-<div id="fullcalendar">
 
-</div>
+<span *ngIf="whatToDisplay == 'classInfo'">
+<app-class-details></app-class-details>
+</span>
 
+    <div id = "currentdate"> 
+      <button class="datebtn" (click)="this.previousWeek()">Previous</button>
+      {{this.generateMonth()}}
+      <button class="datebtn"  (click)="this.nextWeek()">Next</button>
+    </div>
 
+    <div class="calendar">
+    <table id="table">
+      <tr id="days">
+        <th class ="column">Monday</th>
+        <th class ="column">Tuesday</th>
+        <th class ="column">Wednesday</th>
+        <th class ="column">Thursday</th>
+        <th class ="column">Friday</th> 
+      </tr>
 
+      
+        <td *ngFor="let element of classes" (click) = "displayClass(element.id)">
+          <app-schedule-entry
+           [classroom] = "element"></app-schedule-entry>
+        </td>
+      
+    </table>
+    
 
+  </div>
