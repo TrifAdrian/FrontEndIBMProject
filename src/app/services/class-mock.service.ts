@@ -39,7 +39,7 @@ export class ClassMockService {
 
   private getClass(date : Date,id : number) : Class
   {
-    return new Class(id, "ClassName", 1,"Section 1",date,"12","13","Teacher 1","A01",30);
+    return new Class(id, "ClassName"+id, 1,"Section 1",date,"12:00","13:00","Teacher 1","A01",30);
   }
 
   private getClasses(date : Date, number : number) : Class[]
@@ -74,6 +74,15 @@ export class Class
     public capacity : number
   )
   {}
+
+  getDate() : string
+  {
+    let date : Date | undefined = this.date;
+    if(date!=null)
+      return "" + date.getDate() + "/" + (date.getMonth()+1) + "/" + date.getFullYear();
+    return "";
+  }
+  
 }
 
 export class Teacher

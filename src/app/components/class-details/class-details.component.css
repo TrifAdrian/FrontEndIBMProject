@@ -1,4 +1,4 @@
-#classDetails{
+.classDetails{
     margin-left: 60%;
     position: absolute;
     border: 2px solid black;
@@ -9,4 +9,30 @@
     padding-right: 3ex;
     padding-bottom: 3ex;
     padding-top: 3ex;
+    width : 25%;
+    height: auto;
+
+}
+
+.classDetails p
+{
+    margin-left: 20%;
+}
+
+.classDetails input{
+    margin-left: 10%;
+    margin-bottom: 2ex;
+    margin-top: 1ex;
+}
+
+.classDetails label{
+    margin-left: 10%;
+}
+
+.classDetails button{
+    margin-left: 10%;
+}
+
+.timeInput{
+    max-width: 10ex;
 }
