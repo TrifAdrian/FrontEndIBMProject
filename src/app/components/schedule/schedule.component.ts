@@ -1,10 +1,6 @@
-import { ChangeDetectionStrategy, Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { CalendarView, CalendarEvent, DAYS_OF_WEEK } from 'angular-calendar';
-
+import {Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-schedule',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  encapsulation: ViewEncapsulation.None,
   templateUrl: './schedule.component.html',
   styleUrls: ['./schedule.component.css']
 })
@@ -14,20 +10,17 @@ export class ScheduleComponent implements OnInit {
   
   ngOnInit(): void {
   }
+    datetime = new Date(); 
+    currentdate=new Date(this.datetime.getFullYear(), this.datetime.getMonth(), this.datetime.getDate())
 
-  view: CalendarView = CalendarView.Week;
-  
-  viewDate: Date = new Date();
+   //date = this.currentdate.getDate() +'/'+(this.currentdate.getMonth()+1)+'/'+this.currentdate.getFullYear();
 
-  events: CalendarEvent[] = [
-    
-  ];
+   previousbtn(currentdate:Date){
+   }
 
+   next(currentdate:Date){
+  }
 
-  excludeDays: number[] = [0, 6];
-  weekStartsOn = DAYS_OF_WEEK.SUNDAY;
-  CalendarView = CalendarView;
-  
-  
 
 }
+

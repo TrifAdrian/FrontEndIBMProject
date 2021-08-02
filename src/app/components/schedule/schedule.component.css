@@ -1,8 +1,7 @@
-
 .calendar{
     border:3px solid; 
     border-collapse: separate;
-    height: 360px;
+    height: 50%;
     width: 100%;
     border-color: black;
     font-family:'Trebuchet MS';
@@ -24,4 +23,27 @@
 
 #table{
     width: 100%;
+}
+
+#currentdate{
+    background-color: rgb(123, 202, 182);
+    text-align: center;
+    font-family:'Didot';
+    font-weight: 900;
+    font-size: x-large;
+    color:rgb(14, 54, 48);
+    height: 5%;
+}
+.datebtn{
+    text-align: center;
+    font-weight: bold;
+    font-variant: small-caps;
+    font-family:'Trebuchet MS';
+    font-size: small;
+    color:rgb(14, 54, 48);
+    background-color:rgb(68, 151, 130);
+    align-self:flex-end;
+    border-radius: 1cm;
+    border-color: rgb(14, 54, 48);
+
 }
