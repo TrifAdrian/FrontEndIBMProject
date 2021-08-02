@@ -10,6 +10,7 @@
 
 #days{
     background-color: rgb(123, 202, 182);
+    font-size:x-large;
 }
 
 .column{
@@ -32,7 +33,9 @@
     font-weight: 900;
     font-size: x-large;
     color:rgb(14, 54, 48);
-    height: 5%;
+    height: 7%;
+    padding-top: 1ex;
+    padding-bottom: 1ex;
 }
 .datebtn{
     text-align: center;
@@ -45,5 +48,9 @@
     align-self:flex-end;
     border-radius: 1cm;
     border-color: rgb(14, 54, 48);
+    
 
+}
+td{
+    display: block;
 }

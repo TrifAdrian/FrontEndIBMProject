@@ -1,13 +1,38 @@
-#classDetails{
+.classDetails{
     margin-left: 60%;
-    width: auto;
-    position:absolute;
+    position: absolute;
     border: 2px solid black;
-    background-color: lightsteelblue;
+    background-color:rgb(68, 151, 130);
     z-index: 1;
 
     padding-left: 3ex;
     padding-right: 3ex;
     padding-bottom: 3ex;
     padding-top: 3ex;
+    width : 25%;
+    height: auto;
+
+}
+
+.classDetails p
+{
+    margin-left: 20%;
+}
+
+.classDetails input{
+    margin-left: 10%;
+    margin-bottom: 2ex;
+    margin-top: 1ex;
+}
+
+.classDetails label{
+    margin-left: 10%;
+}
+
+.classDetails button{
+    margin-left: 10%;
+}
+
+.timeInput{
+    max-width: 10ex;
 }
