@@ -24,4 +24,8 @@ export class ScheduleEntryComponent implements OnInit {
     this.room=this.classroom?.classroom;
   }
 
+  
+
+
+
 }
