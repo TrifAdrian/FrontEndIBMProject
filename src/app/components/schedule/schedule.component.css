@@ -51,15 +51,13 @@
 
 }
 
-td{
-    display: block;
+tr{
+    border:2px solid rgb(14, 54, 48);
+}
+.calendarEntries:nth-child(odd) {
+    background-color: #9BDDFF;
 }
 
-tr.c1 td {
-    background-color: #76a1cc; color: black;
+.calendarEntries:nth-child(even) {
+    background-color: #008B8B;
 }
-tr.c2 td {
-    background-color: #9BDDFF; color: black;
-}
-/*9BDDFF 008B8B*/
-

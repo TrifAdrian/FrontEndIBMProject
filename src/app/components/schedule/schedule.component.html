@@ -19,7 +19,7 @@
         <th class ="column">Friday</th> 
       </tr>
       
-        <tr *ngFor="let row of this.classesMatrix">
+        <tr class="calendarEntries" *ngFor="let row of this.classesMatrix ; index as i">
           <td *ngFor="let element of row" (click) = "displayClass(element.id)">
             <app-schedule-entry *ngIf = "element != null" [classroom] = "element"></app-schedule-entry>
           </td>

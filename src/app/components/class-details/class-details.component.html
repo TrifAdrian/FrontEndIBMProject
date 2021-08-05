@@ -5,6 +5,7 @@
     <p>Teacher: {{this.targetClass.teacher}}</p>
     <p>Capacity: {{this.targetClass.capacity}}</p>
     <p>Date: {{this.targetClass.getDate()}}</p>
+    <button type="submit">Reserve place</button>
 </div>
 
 <div *ngIf="(role == 'Teacher' || role == 'Admin')&& this.targetClass != null" class="classDetails">
