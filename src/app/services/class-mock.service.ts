@@ -42,20 +42,31 @@ export class ClassMockService {
     return new Class(id, "ClassName"+id, 1,"Section 1",date,"12:00","13:00","Teacher 1","A01",30);
   }
 
-  private getClasses(date : Date, number : number) : Class[]
+  private getClasses(number : number) : Class[]
   {
     let result : Class[] = [];
+    /*
     for(let i : number = 0;i<number;i=i+1)
     {
       result.push(this.getClass(date,i));
     }
+    */
+    result.push(this.getClass(new Date("2021-8-2"),0));
+    result.push(this.getClass(new Date("2021-8-2"),1));
+
+
+    result.push(this.getClass(new Date("2021-8-3"),2));
+    result.push(this.getClass(new Date("2021-8-3"),3));
+
+    result.push(this.getClass(new Date("2021-8-4"),4));
+    result.push(this.getClass(new Date("2021-8-4"),5));
 
     return result
   }
 
-  getArrayClasses(date : Date, number : number) : Observable<Class[]>
+  getArrayClasses(number : number) : Observable<Class[]>
   {
-    return of(this.getClasses(date,number));
+    return of(this.getClasses(number));
   }
 }
 
