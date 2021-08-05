@@ -1,13 +1,10 @@
 .scheduleEntry{
-    border: 2px solid rgb(14, 54, 48);
+    border: 2px solid black;
     width: 100%;
     display: flex;
     margin-left: -2px;
     margin-top: -3px;
     
-
-    
-
 }
 
 .scheduleEntry p{
