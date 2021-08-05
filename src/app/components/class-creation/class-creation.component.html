@@ -17,22 +17,22 @@
             <option *ngFor="let element of teachers" [value]="element">{{element}}</option>
         </select> <br><br>
 
-        <label for="inputDate">Class Date:</label>
-        <input id="inputDate" placeholder="dd/mm/yyyy" /><br><br>
+        <label for="inputDate" >Class Date:</label>
+        <input id="inputDate" name="inputDate" placeholder="mm/dd/yyyy"required [(ngModel)] ="inputDate"/><br><br>
 
         <label for="inputStart">Start of Class:</label><br>
-        <input id = "inputStart" placeholder="hh:mm"><br>
+        <input id = "inputStart" name ="inputStart" placeholder="hh:mm"required [(ngModel)] ="start"><br>
         <label for="inputEnd">End of Class:</label><br>
-        <input id = "inputEnd" placeholder="hh:mm">
+        <input id = "inputEnd"name= "inputEnd" placeholder="hh:mm"required [(ngModel)]="end">
         <br><br>
 
     
 
-        <button type="submit" [disabled]="!roleForm.form.valid">Submit</button>
+        <button type="submit" [disabled]="!roleForm.form.valid"(click)="onSubmit()">Submit</button>
 
         <div [hidden]="roleForm.valid || roleForm.pristine">
             <br>
-            <p>Fill all fields.</p>
+            <p>Please fill in all of the fields.</p>
         </div>
         
     </form>

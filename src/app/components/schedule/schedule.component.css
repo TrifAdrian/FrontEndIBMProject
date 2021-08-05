@@ -1,11 +1,10 @@
 .calendar{
-    border:3px solid; 
-    border-collapse: separate;
+    border:3px solid;
+    border-style:dashed;
+    overflow-y: hidden;
     height: 50%;
     width: 100%;
-    border-color: black;
-    font-family:'Trebuchet MS';
-    font-variant: small-caps;
+    border-color: rgb(14, 54, 48);
 }
 
 #days{
@@ -52,4 +51,15 @@
 
 }
 
+td{
+    display: block;
+}
+
+tr.c1 td {
+    background-color: #76a1cc; color: black;
+}
+tr.c2 td {
+    background-color: #9BDDFF; color: black;
+}
+/*9BDDFF 008B8B*/
 
