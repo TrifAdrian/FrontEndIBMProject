@@ -5,7 +5,7 @@
 
     <div id = "currentdate"> 
       <button class="datebtn" (click)="this.previousWeek()">Previous</button>
-      {{this.generateMonth()}}
+      {{this.dateDisplay}}
       <button class="datebtn"  (click)="this.nextWeek()">Next</button>
     </div>
 
@@ -18,12 +18,13 @@
         <th class ="column">Thursday</th>
         <th class ="column">Friday</th> 
       </tr>
-
       
-        <td *ngFor="let element of classes" (click) = "displayClass(element.id)">
-          <app-schedule-entry
-           [classroom] = "element"></app-schedule-entry>
-        </td>
+        <tr *ngFor="let row of this.classesMatrix">
+          <td *ngFor="let element of row" (click) = "displayClass(element.id)">
+            <app-schedule-entry *ngIf = "element != null" [classroom] = "element"></app-schedule-entry>
+          </td>
+        </tr>
+      
       
     </table>
     
