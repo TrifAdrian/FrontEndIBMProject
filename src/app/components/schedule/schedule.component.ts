@@ -14,15 +14,25 @@ export class ScheduleComponent implements OnInit {
               private classInfo : ClassInfoService,
               private dateManage: DateManageService
               ){}
-  
+
   ngOnInit(): void {
     this.whatToDisplay = this.toggleService.activeWindow;
 
+    this.refreshDate();
+
+    this.refreshClasses();
+  }
+
+  refreshDate() : void
+  {
     this.date = this.dateManage.getDate();
     this.dateDisplay = this.dateManage.dateDisplayFormat(this.date);
+  }
 
-    this.classInfo.refreshClasses();
-    this.classesMatrix = this.classInfo.constructClassMatrix();
+  refreshClasses() : void
+  {
+   this.classInfo.refreshClasses();
+   this.classesMatrix = this.classInfo.constructClassMatrix();
   }
   
   classesMatrix : Class[][]=[];
@@ -44,26 +54,22 @@ export class ScheduleComponent implements OnInit {
     this.toggle("classInfo");
   }
 
-   previousWeek(){
-    this.changeDateRefresh(-7);
-   }
-
-   nextWeek() : void{
-    this.changeDateRefresh(7);
-   }
-  
-   changeDateRefresh(daysChanged : number) : void
-   {
-     if(this.date!=null){
-       this.date.setDate(this.date.getDate()+daysChanged);  
-   
-       this.dateManage.saveToLocal(this.date);
-       this.ngOnInit();
- 
-      }
+  nextWeek() : void
+  {
+    this.dateManage.nextWeek();
+    this.refreshDate();
+    this.ngOnInit();
   }
 
-  
+  previousWeek() : void
+  {
+    this.dateManage.previousWeek();
+    this.refreshDate();
+    this.ngOnInit()
+  }
 
-}
+
+  }
+
+
 

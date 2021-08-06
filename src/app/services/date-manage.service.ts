@@ -46,14 +46,33 @@ export class DateManageService {
     let afterSevenDays : Date = new Date(this.getDate());
     afterSevenDays.setDate(afterSevenDays.getDate() + 7);
 
-    return this.getDate() <= date && date <= afterSevenDays &&
-            this.equalMonthYear(date,afterSevenDays);
+    return this.getDate() <= date && date <= afterSevenDays && this.equalMonthYear(date,this.getDate());
   }
 
   equalMonthYear(date1 : Date, date2 : Date) : boolean
   {
-    return date1.getMonth() == date2.getMonth() && date1.getFullYear() == date2.getFullYear();
+    return date1.getMonth() == date2.getMonth() &&
+           date1.getFullYear() == date2.getFullYear();
   }
+
+  previousWeek(){
+    this.changeDateRefresh(this.defaultDate,-7);
+   }
+
+   nextWeek() : void{
+    this.changeDateRefresh(this.defaultDate,7);
+   }
+  
+   changeDateRefresh(date : Date, daysChanged : number) : void
+   {
+     if(date!=null){
+       date.setDate(date.getDate()+daysChanged);  
+   
+       this.saveToLocal(date);
+      }
+  }
+
+  
 
   saveToLocal(date : Date | null): void{
     if(date!=null){

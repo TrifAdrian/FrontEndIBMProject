@@ -40,8 +40,24 @@ export class ClassCreationComponent implements OnInit {
   }
   
   onSubmit() : void{
-      console.log(this.inputDate+this.inputName+this.inputSection+this.inputTeacher+this.inputYear+this.start+this.end);
+
+      let args = new Array();   
+      args.push(this.inputDate,this.inputName,this.inputSection,
+        this.inputTeacher,this.inputYear,this.start,this.end);
+        
+      this.printValues(args);
       
+      console.log(this.formValidation.validTime(this.start));
+      console.log(this.formValidation.checkIfDate(new Date(this.inputDate)));
+      
+  }
+
+  printValues <T>(array : T[])
+  {
+    for(let i = 0; i<array.length;i=i+1)
+    {
+      console.log(array[i]);
+    }
   }
 
     

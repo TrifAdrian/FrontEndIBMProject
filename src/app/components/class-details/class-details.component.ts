@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ClassInfoService } from 'src/app/services/class-info.service';
-import { ClassMockService,Class } from 'src/app/services/class-mock.service';
-import { UserMockService } from 'src/app/services/user-mock.service';
+import { ClassMockService,Class,Teacher } from 'src/app/services/class-mock.service';
+import { FormValidationService } from 'src/app/services/form-validation.service';
+import { UserMockService} from 'src/app/services/user-mock.service';
 
 @Component({
   selector: 'app-class-details',
@@ -10,31 +11,32 @@ import { UserMockService } from 'src/app/services/user-mock.service';
 })
 export class ClassDetailsComponent implements OnInit {
 
-  constructor(private classInfo : ClassInfoService, private userMock : UserMockService) { }
+  constructor(private classInfo : ClassInfoService, 
+              private userMock : UserMockService,
+              private classMockService : ClassMockService,
+              private formValidation : FormValidationService) { }
 
   targetClass : Class | null = null;
   role : string | null = null;
+  teachers : Teacher[] = this.classInfo.teachers;
+  sections : string[] = this.classInfo.sections;
+
+  inputTeacher : string = "";
+  inputSection : string = "";
 
   ngOnInit(): void {
     this.targetClass = this.classInfo.getTarget();
     this.role = this.userMock.getUserRole();
+
+    if(!!this.targetClass)
+    {
+      this.inputTeacher  = this.targetClass.teacher;
+      this.inputSection = this.targetClass.section;
+    }
   }
 
   onSubmit()
   {
     
   }
-
-  /*
-   public id : number,
-    public name : string,
-    public year : number,
-    public section : string,
-    public date : Date,
-    public start : string,
-    public end : string,
-    public teacher : string,
-    public classroom : string,
-    public capacity : number
-  */
 }

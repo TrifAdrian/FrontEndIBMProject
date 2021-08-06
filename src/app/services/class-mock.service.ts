@@ -110,7 +110,7 @@ export class Teacher
     return this.section;
   }
 
-  public toString()
+  public toString() : string
   {
     return this.firstName +" "+ this.lastName;
   }

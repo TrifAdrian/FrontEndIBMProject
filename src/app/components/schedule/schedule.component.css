@@ -1,6 +1,8 @@
 .calendar{
+    /*
     border:3px solid;
     border-style:dashed;
+    */
     overflow-y: hidden;
     height: 50%;
     width: 100%;
@@ -15,6 +17,8 @@
 .column{
     text-align:center;
     width: 20%;
+    padding-top: 1ex;
+    padding-bottom: 1ex;
 }
 
 #coursecell{
@@ -32,7 +36,7 @@
     font-weight: 900;
     font-size: x-large;
     color:rgb(14, 54, 48);
-    height: 7%;
+    height: 4ex;
     padding-top: 1ex;
     padding-bottom: 1ex;
 }
@@ -54,10 +58,15 @@
 tr{
     border:2px solid rgb(14, 54, 48);
 }
-.calendarEntries:nth-child(odd) {
+
+tr td{
+    border-right: 2px solid rgb(14, 54, 48) ;
+}
+
+.calendarEntries:nth-child(odd){
     background-color: #9BDDFF;
 }
 
-.calendarEntries:nth-child(even) {
+.calendarEntries:nth-child(even){
     background-color: #008B8B;
 }

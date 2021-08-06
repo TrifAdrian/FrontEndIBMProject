@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ClassMockService,Class } from './class-mock.service';
+import { ClassMockService,Class, Teacher } from './class-mock.service';
 import { DateManageService } from './date-manage.service';
 
 @Injectable({
@@ -7,12 +7,17 @@ import { DateManageService } from './date-manage.service';
 })
 export class ClassInfoService {
 
-  classes : Class[] = this.mockClasses();
-  days:number[] = [1, 2, 3, 4, 5];
+  public classes : Class[] = this.mockClasses();
+  public teachers : Teacher[] = [];
+  public sections : string[] = [];
+  public days:number[] = [1, 2, 3, 4, 5];
+  public target : number = 0;
 
 
   constructor(private classMock : ClassMockService, private dateManage : DateManageService) {
-    this.refreshClasses()
+    this.refreshClasses();
+    this.getMockSections();
+    this.getMockTeachers();
   }
 
   public refreshClasses()
@@ -20,8 +25,6 @@ export class ClassInfoService {
     this.getMockClasses();
     this.classes = this.getClassesByWeek();
   }
-
-  public target : number = 0;
 
   private getMockClasses(): void {
     this.classMock.getArrayClasses(2)
@@ -88,5 +91,15 @@ export class ClassInfoService {
   transposeMatrix(mat: Class[][]) 
   {
     return mat[0].map((_, colIndex) => mat.map(row => row[colIndex]));
+  }
+
+  getMockTeachers(): void {
+    this.classMock.getArrayTeachers("")
+    .subscribe(teachers => this.teachers = teachers);
+  }
+
+  getMockSections(): void {
+    this.classMock.getArraySections()
+    .subscribe(sections => this.sections = sections);
   }
 }

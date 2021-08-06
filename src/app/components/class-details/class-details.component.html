@@ -18,10 +18,18 @@
         <input name = classYear value = {{this.targetClass.year}}><br>
 
         <label for="classSection">Section</label><br>
-        <input name = classSection value = {{this.targetClass.section}}><br>
+        <select [(ngModel)] = "inputSection" required name="inputSection" id="sectionDropdown">
+            <option value="">Select the Class section</option>
+            <option *ngFor="let element of sections" [value]="element">{{element}}</option>
+        </select> <br><br>
+
+        
 
         <label for="classTeacher">Teacher</label><br>
-        <input name = classTeacher value = {{this.targetClass.teacher}}><br>
+        <select [(ngModel)] = "inputTeacher" required name="inputTeacher" id="teacherDropdown">
+            <option value="">Select the Class teacher</option>
+            <option *ngFor="let element of teachers" [value]="element">{{element}}</option>
+        </select> <br><br>
 
         <label for="classCapacity">Capacity</label><br>
         <input name = classCapacity value = {{this.targetClass.capacity}}><br>

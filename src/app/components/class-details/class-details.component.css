@@ -33,6 +33,10 @@
     margin-left: 10%;
 }
 
+.classDetails select{
+    margin-left: 10%;
+}
+
 .timeInput{
     max-width: 10ex;
 }
