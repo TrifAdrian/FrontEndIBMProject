@@ -9,7 +9,7 @@ import {environment} from "../../environments/environment";
 })
 export class ClassroomService {
 
-  classroomUrl!: string;
+  private classroomUrl!: string;
 
   constructor(private http:HttpClient) {
     this.classroomUrl=`${environment.baseUrl}/classroom`;
