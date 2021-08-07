@@ -16,6 +16,8 @@ import { ScheduleEntryComponent } from './components/schedule-entry/schedule-ent
 import { ToolbarToggleService } from './services/toolbar-toggle.service';
 import { ClassInfoService } from './services/class-info.service';
 import { DateManageService } from './services/date-manage.service';
+import { FeatureComponent } from './components/feature/feature.component';
+import {HttpClient, HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -25,12 +27,14 @@ import { DateManageService } from './services/date-manage.service';
     ClassDetailsComponent,
     ToolbarComponent,
     ClassCreationComponent,
-    ScheduleEntryComponent
+    ScheduleEntryComponent,
+    FeatureComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    HttpClientModule,
     MatToolbarModule,
     BrowserAnimationsModule,
     MatButtonModule,
