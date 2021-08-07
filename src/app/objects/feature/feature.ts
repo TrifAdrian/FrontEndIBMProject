@@ -1,6 +1,6 @@
 export class Feature {
 
-  id!: number;
+  id: number = 0;
   name!: string;
 
 }
