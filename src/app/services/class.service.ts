@@ -38,9 +38,9 @@ export class ClassService {
     return this.http.post(this.classUrl,details);
   }
 
-  public editClass(classInfo : Class)
+  public editClass(id:number,classInfo : Classdetail)
   {
-    return this.http.put(this.classUrl,classInfo);
+    return this.http.put(`${this.classUrl}/${id}`,classInfo);
   }
 
   public enrollStudent(data : ClassEnrollStudent) :Observable<ClassEnrollStudent>

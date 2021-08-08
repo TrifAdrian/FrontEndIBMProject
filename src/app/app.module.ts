@@ -18,6 +18,7 @@ import { ClassInfoService } from './services/class-info.service';
 import { DateManageService } from './services/date-manage.service';
 import { FeatureComponent } from './components/feature/feature.component';
 import {HttpClient, HttpClientModule} from "@angular/common/http";
+import {DatePipe} from "@angular/common";
 
 @NgModule({
   declarations: [
@@ -39,7 +40,7 @@ import {HttpClient, HttpClientModule} from "@angular/common/http";
     BrowserAnimationsModule,
     MatButtonModule,
   ],
-  providers: [DateManageService, ClassInfoService],
+  providers: [DateManageService, ClassInfoService,DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
