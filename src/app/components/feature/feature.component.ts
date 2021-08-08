@@ -3,11 +3,8 @@ import {FeatureService} from "../../services/feature.service";
 import {Feature} from "../../objects/feature/feature";
 import {Classroom} from "../../objects/classroom/classroom";
 import {ClassroomService} from "../../services/classroom.service";
-import {delay, Observable} from "rxjs";
 import {ClassService} from "../../services/class.service";
 import {Classdetail} from "../../objects/ClassDetail/classdetail";
-import {DatePipe, formatDate} from "@angular/common";
-import {Class} from "../../objects/class/class";
 import {ClassEnrollStudent} from "../../objects/ClassEnrollStudent/class-enroll-student";
 
 @Component({
@@ -30,7 +27,7 @@ export class FeatureComponent implements OnInit {
   constructor(private featureService : FeatureService,
               private classroomService : ClassroomService,
               private classService:ClassService,
-              private datePipe:DatePipe) { }
+             ) { }
 
   ngOnInit(): void {
     // this.featureTest();
@@ -93,34 +90,40 @@ export class FeatureComponent implements OnInit {
     this.classService.getClass(2).subscribe(x => console.log(x))
     this.classService.getClasses().subscribe(x => console.log(x))
 
-    let date = new Date("2021-08-08T17:45:02+0000")
+    let date = new Date("2021-08-08T16:45:02+0000")
 
-    //console.log(date)
+    console.log(date.getHours(),date.getMinutes())
     //console.log(date.getFullYear(),date.getMonth() + 1,date.getDate(),date.getUTCHours() ,date.getMinutes())
 
-    // this.classdummy ={
-    //   name:"Geometry",
-    //   year:3,
-    //   section:"Upt",
-    //   dates:[date.toISOString()],
-    //   classroomId:1,
-    //   teacherId:4
-    // }
+    this.classdummy ={
+      name:"Geometry",
+      year:3,
+      section:"Upt",
+      dates:[{
+        startTime:date.toISOString(),
+        endTime:date.toISOString()
+      }],
+      classroomId:1,
+      teacherId:4
+    }
 
     //console.log(this.classdummy)
 
-    //this.classService.createClass(this.classdummy).subscribe() // error date time thing Must fix ASAP
+   // this.classService.createClass(this.classdummy).subscribe() // error date time thing Must fix ASAP
 
     this.editclass={
       name:"TestEdit",
       year:2,
       section:"Upt",
-      dates:[],
+      dates:[{
+        startTime:date.toISOString(),
+        endTime:date.toISOString()
+      }],
       classroomId:4,
       teacherId:2
     }
 
-    // this.classService.editClass(1,this.editclass).subscribe()
+    //this.classService.editClass(1,this.editclass).subscribe()
 
     this.teststud={
       classId:4,

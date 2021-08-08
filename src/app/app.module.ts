@@ -40,7 +40,7 @@ import {DatePipe} from "@angular/common";
     BrowserAnimationsModule,
     MatButtonModule,
   ],
-  providers: [DateManageService, ClassInfoService,DatePipe],
+  providers: [DateManageService, ClassInfoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

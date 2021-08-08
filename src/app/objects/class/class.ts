@@ -1,4 +1,5 @@
 import {Classroom} from "../classroom/classroom";
+import {Schedule} from "../schedule/schedule"
 
 export class Class {
 
@@ -8,6 +9,6 @@ export class Class {
   section ?: string;
   classroom ?: Classroom;
   teacher ?: string;
-  dateList ?: string[];
+  dateList ?: Schedule[];
 
 }
