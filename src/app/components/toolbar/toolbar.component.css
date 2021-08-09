@@ -30,12 +30,19 @@
 .toggleForm{
     z-index: 1;
     position: absolute;
-    background-color:rgb(68, 151, 130);
+    background-color:#b1a899;
     width:30ex;
     margin-left: 50ex;
     padding-left: 3ex;
     padding-right: 3ex;
     padding-bottom: 3ex;
     padding-top: 3ex;
-    border: 2px solid black;
+    border: solid rgb(84, 77, 85);
+}
+
+.toolbarButton:hover{
+    background-color: #b1a899;
+    color:rgb(84, 77, 85);
+    border:solid;
+    border-color:rgb(84, 77, 85);
 }

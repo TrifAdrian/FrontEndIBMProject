@@ -21,7 +21,6 @@ export class FormValidationService {
   validTime(hour: string):boolean{
     let parts: string[];
     parts=hour.split(":");
-    console.log(parts);
     if(parts.length==2 && this.isNumeric(parts[0]) && this.isNumeric(parts[1])){
     let hours: number=Number(parts[0]);
     let minutes: number=Number(parts[1]);
