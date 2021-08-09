@@ -1,0 +1,35 @@
+Test Feature Controller --------------------
+
+<div *ngFor="let f of feature2">
+  <span>{{f.id}} {{f.name}}</span><br>
+</div><br>
+
+
+Test Classroom Controller -----------------------<br>
+
+Get by id of 1
+<p *ngIf="classroom$">
+  <span>{{classroom$.id}} {{classroom$.name}} {{classroom$.location}} {{classroom$.capacity}}
+    <span *ngFor="let test of classroom$.features_list">
+      <li>{{test.id}} {{test.name}}</li>
+    </span>
+
+  </span>
+</p>
+
+Get all Classrooms
+<div *ngFor="let cr of classrooms">
+  <span>{{cr.id}} {{cr.name}} {{cr.location}} {{cr.capacity}}
+    <span *ngFor="let l of cr.features_list">
+      <li>{{l.id}} {{l.name}}</li>
+    </span>
+  </span>
+</div>
+
+
+Test Class Controller ----------------------------<br>
+
+
+
+
+

@@ -1,2 +1,32 @@
-<mwl-calendar-week-view [viewDate]="viewDate">
-</mwl-calendar-week-view>
+
+<span *ngIf="whatToDisplay == 'classInfo'">
+<app-class-details></app-class-details>
+</span>
+
+    <div id = "currentdate"> 
+      <button class="datebtn" (click)="this.previousWeek()">Previous</button>
+      {{this.dateDisplay}}
+      <button class="datebtn"  (click)="this.nextWeek()">Next</button>
+    </div>
+
+    <div class="calendar">
+    <table id="table">
+      <tr id="days">
+        <th class ="column">Monday</th>
+        <th class ="column">Tuesday</th>
+        <th class ="column">Wednesday</th>
+        <th class ="column">Thursday</th>
+        <th class ="column">Friday</th> 
+      </tr>
+      
+        <tr *ngFor="let row of this.classesMatrix" class="calendarEntries">
+          <td *ngFor="let element of row" (click) = "displayClass(element.id)">
+            <app-schedule-entry *ngIf = "!!element" [classroom] = "element"></app-schedule-entry>
+          </td>
+        </tr>
+      
+      
+    </table>
+    
+
+  </div>

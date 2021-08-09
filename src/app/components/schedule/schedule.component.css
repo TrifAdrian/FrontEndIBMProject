@@ -1,0 +1,72 @@
+.calendar{
+    /*
+    border:3px solid;
+    border-style:dashed;
+    */
+    overflow-y: hidden;
+    height: 50%;
+    width: 100%;
+    border-color: rgb(14, 54, 48);
+}
+
+#days{
+    background-color: rgb(123, 202, 182);
+    font-size:x-large;
+}
+
+.column{
+    text-align:center;
+    width: 20%;
+    padding-top: 1ex;
+    padding-bottom: 1ex;
+}
+
+#coursecell{
+    background-color: rgb(164, 214, 203);
+}
+
+#table{
+    width: 100%;
+}
+
+#currentdate{
+    background-color: rgb(123, 202, 182);
+    text-align: center;
+    font-family:'Didot';
+    font-weight: 900;
+    font-size: x-large;
+    color:rgb(14, 54, 48);
+    height: 4ex;
+    padding-top: 1ex;
+    padding-bottom: 1ex;
+}
+.datebtn{
+    text-align: center;
+    font-weight: bold;
+    font-variant: small-caps;
+    font-family:'Trebuchet MS';
+    font-size: small;
+    color:rgb(14, 54, 48);
+    background-color:rgb(68, 151, 130);
+    align-self:flex-end;
+    border-radius: 1cm;
+    border-color: rgb(14, 54, 48);
+    
+
+}
+
+tr{
+    border:2px solid rgb(14, 54, 48);
+}
+
+tr td{
+    border-right: 2px solid rgb(14, 54, 48) ;
+}
+
+.calendarEntries:nth-child(odd){
+    background-color: #9BDDFF;
+}
+
+.calendarEntries:nth-child(even){
+    background-color: #008B8B;
+}

@@ -12,8 +12,13 @@ import { ClassCreationComponent } from './components/class-creation/class-creati
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatButtonModule} from '@angular/material/button';
-import { CalendarModule, DateAdapter } from 'angular-calendar';
-import { adapterFactory } from 'angular-calendar/date-adapters/date-fns'; 
+import { ScheduleEntryComponent } from './components/schedule-entry/schedule-entry.component';
+import { ToolbarToggleService } from './services/toolbar-toggle.service';
+import { ClassInfoService } from './services/class-info.service';
+import { DateManageService } from './services/date-manage.service';
+import { FeatureComponent } from './components/feature/feature.component';
+import {HttpClient, HttpClientModule} from "@angular/common/http";
+import {DatePipe} from "@angular/common";
 
 @NgModule({
   declarations: [
@@ -22,18 +27,20 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
     ScheduleComponent,
     ClassDetailsComponent,
     ToolbarComponent,
-    ClassCreationComponent
+    ClassCreationComponent,
+    ScheduleEntryComponent,
+    FeatureComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    HttpClientModule,
     MatToolbarModule,
     BrowserAnimationsModule,
     MatButtonModule,
-    CalendarModule.forRoot({ provide: DateAdapter, useFactory: adapterFactory })
   ],
-  providers: [],
+  providers: [DateManageService, ClassInfoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
