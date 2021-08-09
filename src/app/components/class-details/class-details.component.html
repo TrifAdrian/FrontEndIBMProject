@@ -12,10 +12,10 @@
     <form (ngSubmit)="onSubmit()" #roleForm="ngForm">
 
         <label for="className">Class Name</label><br>
-        <input name = className value = {{this.targetClass.name}}><br>
+        <input [(ngModel)]="className" name = className value = {{this.targetClass.name}}><br>
 
         <label for="classYear">Class Year</label><br>
-        <input name = classYear value = {{this.targetClass.year}}><br>
+        <input [(ngModel)]="classYear"name = classYear value = {{this.targetClass.year}}><br>
 
         <label for="classSection">Section</label><br>
         <select [(ngModel)] = "inputSection" required name="inputSection" id="sectionDropdown">
@@ -32,14 +32,14 @@
         </select> <br><br>
 
         <label for="classCapacity">Capacity</label><br>
-        <input name = classCapacity value = {{this.targetClass.capacity}}><br>
+        <input [(ngModel)]="classCapacity"name = classCapacity value = {{this.targetClass.capacity}}><br>
 
         <label for="classDate">Date</label><br>
-        <input name = classDate placeholder = "dd/mm/yyyy" value = {{this.targetClass.getDate()}}><br>
+        <input [(ngModel)]="classDate"name = classDate placeholder = "mm/dd/yyyy" value = {{this.targetClass.getDate()}}><br>
 
         <label for="classStart">Start time and End time</label><br>
-        <input class = "timeInput" name = classStart placeholder = "hh:mm" value = {{this.targetClass.start}}>
-        <input class = "timeInput" name = classEnd placeholder = "hh:mm" value = {{this.targetClass.end}}><br>
+        <input [(ngModel)]="classStart" class = "timeInput" name = classStart placeholder = "hh:mm" value = {{this.targetClass.start}}>
+        <input [(ngModel)]="classEnd" class = "timeInput" name = classEnd placeholder = "hh:mm" value = {{this.targetClass.end}}><br>
 
         <button type="submit" [disabled]="!roleForm.form.valid">Edit Class</button>
 

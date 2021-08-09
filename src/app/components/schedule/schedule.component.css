@@ -1,8 +1,4 @@
 .calendar{
-    /*
-    border:3px solid;
-    border-style:dashed;
-    */
     overflow-y: hidden;
     height: 50%;
     width: 100%;
@@ -51,8 +47,6 @@
     align-self:flex-end;
     border-radius: 1cm;
     border-color: rgb(14, 54, 48);
-    
-
 }
 
 tr{
@@ -69,4 +63,16 @@ tr td{
 
 .calendarEntries:nth-child(even){
     background-color: #008B8B;
+}
+td:hover{
+    background-color:#b1a899;
+    border:solid;
+    border-color:rgb(84, 77, 85);
+    color: rgb(84, 77, 85);
+}
+.datebtn:hover{
+    background-color: rgb(84, 77, 85);
+    color:#b1a899;
+    border:solid;
+    border-color: #b1a899;
 }
