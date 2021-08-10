@@ -11,8 +11,13 @@
     <app-user-role-input></app-user-role-input>
 </span>
 
-<span *ngIf="whatToDisplay == 'create'">
+<span  *ngIf="whatToDisplay == 'create'">
     <app-class-creation></app-class-creation>
 </span>
+
+<span *ngIf="whatToDisplay == 'classInfo'">
+    <app-class-details ></app-class-details>
+</span>
+
 
 

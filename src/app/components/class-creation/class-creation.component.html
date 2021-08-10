@@ -17,8 +17,13 @@
             <option *ngFor="let element of teachers" [value]="element">{{element}}</option>
         </select> <br><br>
 
+        <label for="inputCapacity" >Class Date:</label>
+        <input id="inputCapacity" name="inputCapacity" placeholder="50" required
+        [(ngModel)] ="inputCapacity"/><br><br>
+
         <label for="inputDate" >Class Date:</label>
-        <input id="inputDate" name="inputDate" placeholder="mm/dd/yyyy"required [(ngModel)] ="inputDate"/><br><br>
+        <input id="inputDate" name="inputDate" placeholder="mm/dd/yyyy"required 
+        [(ngModel)] ="inputDate"/><br><br>
 
         <label for="inputStart">Start of Class:</label><br>
         <input id = "inputStart" name ="inputStart" placeholder="hh:mm"required [(ngModel)] ="start"><br>
@@ -28,7 +33,7 @@
 
     
 
-        <button type="submit" [disabled]="!roleForm.form.valid"(click)="onSubmit()">Submit</button>
+        <button type="submit" [disabled]="!roleForm.form.valid" (click)="onSubmit()">Submit</button>
 
         <div [hidden]="roleForm.valid || roleForm.pristine">
             <br>
