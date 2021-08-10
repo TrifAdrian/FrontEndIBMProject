@@ -48,7 +48,7 @@ export class ScheduleComponent implements OnInit {
     this.toggleService.toggleWindow(name);
     this.ngOnInit();
   }
-
+  
   displayClass(id : number) : void{
     this.classInfo.target=id;
     this.toggle("classInfo");

@@ -1,4 +1,25 @@
 #createForm{
-    margin-left: 65ex;
     padding-right: 5ex;
+}
+button{
+    background-color: #ece5d8;
+    border: solid;
+    border-color: rgb(84, 77, 85);
+    margin-left: 30%;
+    
+}
+input{
+    background-color: #ece5d8;
+    border: solid;
+    border-color: rgb(84, 77, 85);
+}
+#sectionDropdown{
+    background-color: #ece5d8;
+    border: solid;
+    border-color: rgb(84, 77, 85);
+}
+#teacherDropdown{
+    background-color: #ece5d8;
+    border: solid;
+    border-color: rgb(84, 77, 85);
 }

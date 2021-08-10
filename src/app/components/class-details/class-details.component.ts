@@ -12,31 +12,21 @@ import { UserMockService} from 'src/app/services/user-mock.service';
 export class ClassDetailsComponent implements OnInit {
 
   constructor(private classInfo : ClassInfoService, 
-              private userMock : UserMockService,
-              private classMockService : ClassMockService,
-              private formValidation : FormValidationService) { }
+              private userMock : UserMockService) { }
 
   targetClass : Class | null = null;
   role : string | null = null;
-  teachers : Teacher[] = this.classInfo.teachers;
-  sections : string[] = this.classInfo.sections;
-
-  inputTeacher : string = "";
-  inputSection : string = "";
 
   ngOnInit(): void {
     this.targetClass = this.classInfo.getTarget();
     this.role = this.userMock.getUserRole();
-
-    if(!!this.targetClass)
-    {
-      this.inputTeacher  = this.targetClass.teacher;
-      this.inputSection = this.targetClass.section;
-    }
   }
 
-  onSubmit()
-  {
-    
-  }
+
+
+
+  
 }
+
+  
+

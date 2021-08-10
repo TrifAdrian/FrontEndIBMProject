@@ -1,17 +1,21 @@
 .classDetails{
-    margin-left: 60%;
     position: absolute;
-    border: 2px solid black;
-    background-color:rgb(68, 151, 130);
+    border:solid rgb(84, 77, 85);
+    background-color:#b1a899;
     z-index: 1;
+    width : 20%;
+    padding-top: 1ex;
+    padding-bottom: 1ex;
+    padding-left: 1ex;
+    padding-right: 1ex;
+    margin-left: 60%;
+    margin-top: -1ex;
 
-    padding-left: 3ex;
-    padding-right: 3ex;
-    padding-bottom: 3ex;
-    padding-top: 3ex;
-    width : 25%;
-    height: auto;
+}
 
+.classEdit{
+    position: absolute;
+    margin-left: 30%;
 }
 
 .classDetails p
@@ -23,18 +27,28 @@
     margin-left: 10%;
     margin-bottom: 2ex;
     margin-top: 1ex;
+    border:solid rgb(84, 77, 85);
+    background-color:#ece5d8;
 }
 
 .classDetails label{
     margin-left: 10%;
+    color:rgb(84, 77, 85);
 }
 
 .classDetails button{
-    margin-left: 10%;
+    margin-left: 30%;
+    background-color:#ece5d8;
+    border: solid;
+    border-color:rgb(84, 77, 85);
+
 }
 
 .classDetails select{
     margin-left: 10%;
+    background-color:#ece5d8;
+    border:solid;
+    border-color:rgb(84, 77, 85);
 }
 
 .timeInput{

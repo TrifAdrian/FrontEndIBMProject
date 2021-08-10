@@ -19,6 +19,8 @@ import { DateManageService } from './services/date-manage.service';
 import { FeatureComponent } from './components/feature/feature.component';
 import {HttpClient, HttpClientModule} from "@angular/common/http";
 import {DatePipe} from "@angular/common";
+import { FormValidationService } from './services/form-validation.service';
+
 
 @NgModule({
   declarations: [
@@ -40,7 +42,7 @@ import {DatePipe} from "@angular/common";
     BrowserAnimationsModule,
     MatButtonModule,
   ],
-  providers: [DateManageService, ClassInfoService],
+  providers: [DateManageService, ClassInfoService, FormValidationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

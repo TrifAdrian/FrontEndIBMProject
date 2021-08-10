@@ -8,41 +8,7 @@
     <button type="submit">Reserve place</button>
 </div>
 
-<div *ngIf="(role == 'Teacher' || role == 'Admin')&& this.targetClass != null" class="classDetails">
-    <form (ngSubmit)="onSubmit()" #roleForm="ngForm">
+<app-class-creation *ngIf="(role == 'Teacher' || role == 'Admin') && this.targetClass != null"
+ [purpose]="'editClass'" class="classEdit"></app-class-creation>
 
-        <label for="className">Class Name</label><br>
-        <input name = className value = {{this.targetClass.name}}><br>
 
-        <label for="classYear">Class Year</label><br>
-        <input name = classYear value = {{this.targetClass.year}}><br>
-
-        <label for="classSection">Section</label><br>
-        <select [(ngModel)] = "inputSection" required name="inputSection" id="sectionDropdown">
-            <option value="">Select the Class section</option>
-            <option *ngFor="let element of sections" [value]="element">{{element}}</option>
-        </select> <br><br>
-
-        
-
-        <label for="classTeacher">Teacher</label><br>
-        <select [(ngModel)] = "inputTeacher" required name="inputTeacher" id="teacherDropdown">
-            <option value="">Select the Class teacher</option>
-            <option *ngFor="let element of teachers" [value]="element">{{element}}</option>
-        </select> <br><br>
-
-        <label for="classCapacity">Capacity</label><br>
-        <input name = classCapacity value = {{this.targetClass.capacity}}><br>
-
-        <label for="classDate">Date</label><br>
-        <input name = classDate placeholder = "dd/mm/yyyy" value = {{this.targetClass.getDate()}}><br>
-
-        <label for="classStart">Start time and End time</label><br>
-        <input class = "timeInput" name = classStart placeholder = "hh:mm" value = {{this.targetClass.start}}>
-        <input class = "timeInput" name = classEnd placeholder = "hh:mm" value = {{this.targetClass.end}}><br>
-
-        <button type="submit" [disabled]="!roleForm.form.valid">Edit Class</button>
-
-    </form>
-
-</div>
