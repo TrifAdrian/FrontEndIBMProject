@@ -42,4 +42,21 @@ export class FormValidationService {
     return true;
   }
 
+  checkCreateForm(args : string[], start : string, inputDate : string):void{
+  
+  this.printValues(args);
+      
+  console.log(this.validTime(start));
+  console.log(this.checkIfDate(new Date(inputDate)));
+      
+  }
+
+  printValues <T>(array : T[])
+  {
+    for(let i = 0; i<array.length;i=i+1)
+    {
+      console.log(array[i]);
+    }
+  }
+
 }
