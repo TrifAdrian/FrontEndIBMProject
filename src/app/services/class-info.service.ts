@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { ClassMockService,Class, Teacher } from './class-mock.service';
 import { DateManageService } from './date-manage.service';
+import {ClassService} from "./class.service";
+
 
 @Injectable({
   providedIn: 'root'
@@ -27,7 +29,7 @@ export class ClassInfoService {
   }
 
   private getMockClasses(): void {
-    this.classMock.getArrayClasses(2)
+    this.classMock.getArrayClasses(3)
     .subscribe(classes => this.classes = classes);
   }
 
@@ -88,7 +90,7 @@ export class ClassInfoService {
     return result;
   }
 
-  transposeMatrix(mat: Class[][]) 
+  transposeMatrix(mat: Class[][])
   {
     return mat[0].map((_, colIndex) => mat.map(row => row[colIndex]));
   }
