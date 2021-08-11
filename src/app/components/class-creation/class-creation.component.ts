@@ -58,67 +58,34 @@ export class ClassCreationComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
-    // this.getMockTeachers();
-    // this.getMockSections();
-    // if(this.purpose=="editClass")
-    // {
-    //   this.targetClass = this.classInfo.getTarget();
-    //   this.loadDefaultInputs();
-    // }
-
-  }
-
-  loadDefaultInputs(){
-    // if(!!this.targetClass){
-    //     this.inputName=this.targetClass?.name;
-    //     this.inputDate=this.targetClass?.getDate();
-    //     this.inputYear=""+this.targetClass.year;
-    //     this.inputSection=this.targetClass.section;
-    //     this.inputTeacher=this.targetClass.teacher;
-    //     this.inputCapacity=""+this.targetClass.capacity;
-    //     this.start=this.targetClass.end;
-    //     this.end=this.targetClass.start;
-    //
-    // }
-  }
-
-  getMockTeachers(): void {
-    // this.classMock.getArrayTeachers("")
-    // .subscribe(teachers => this.teachers = teachers);
-  }
-
-  getMockSections(): void {
-    // this.classMock.getArraySections()
-    // .subscribe(sections => this.sections = sections);
   }
 
   onSubmit() : void{
-    let schedule : Schedule = new Schedule();
-   let date = new Date(Date.UTC(this.inputDate.year,this.inputDate.month-1,this.inputDate.day));
-   date.setUTCHours(this.start.hour);
-   date.setUTCMinutes(this.start.minute);
+  let schedule : Schedule = new Schedule();
+  let date = new Date(Date.UTC(this.inputDate.year,this.inputDate.month-1,this.inputDate.day));
+  date.setUTCHours(this.start.hour);
+  date.setUTCMinutes(this.start.minute);
 
-   //console.log(date);
+  //console.log(date);
 
-   schedule.startTime=date.toISOString();
+  schedule.startTime=date.toISOString();
 
-   date.setUTCHours(this.end.hour);
-   date.setUTCMinutes(this.end.minute);
+  date.setUTCHours(this.end.hour);
+  date.setUTCMinutes(this.end.minute);
 
-   //console.log(date);
+  // console.log(date);
 
-   schedule.endTime=date.toISOString();
+  schedule.endTime=date.toISOString();
 
-   this.createClass={
-      name:this.inputName,
-      year:parseInt(this.inputYear),
-      section: this.inputSection,
-      dates:[schedule],
-      teacherId : 1,
-      classroomId : parseInt(this.inputClassroom)
+  this.createClass={
+  name:this.inputName,
+  year:parseInt(this.inputYear),
+  section: this.inputSection,
+  dates:[schedule],
+  teacherId : this.inputTeacher,
+  classroomId : parseInt(this.inputClassroom)
 
-   }
+ }
 
    this.classService.createClass(this.createClass).subscribe()
 

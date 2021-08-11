@@ -21,6 +21,7 @@ import {HttpClient, HttpClientModule} from "@angular/common/http";
 
 import { FormValidationService } from './services/form-validation.service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import {ClassroomCreationComponent} from "./components/classroom-creation/classroom-creation.component";
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     ToolbarComponent,
     ClassCreationComponent,
     ScheduleEntryComponent,
-    FeatureComponent
+    FeatureComponent,
+    ClassroomCreationComponent
   ],
   imports: [
     BrowserModule,

@@ -1,61 +1,46 @@
 <div id="createForm" class="toggleForm" xmlns="http://www.w3.org/1999/html">
 
     <form id="form"(ngSubmit)="onSubmit()" #roleForm="ngForm">
+      <div style="display: flex;">
+        <div>
+      <label for="inputName">Input name:</label><br>
+      <input [(ngModel)] = "inputName" name = "inputName" required
+      type="text" id="inputName"><br><br>
+      <label for="inputYear">Input year:</label><br>
+      <input [(ngModel)] = "inputYear" name = "inputYear" required
+      type="text" id="inputYear"><br><br>
 
-        <input [(ngModel)] = "inputName" name = "inputName" required
-        type="text" placeholder="Class Name"><br><br>
-        <input [(ngModel)] = "inputYear" name = "inputYear" required
-        type="text" placeholder="Class Year"><br><br>
-
+      <label for="inputSection">Input section:</label><br>
+      <input [(ngModel)] = "inputSection" name = "inputSection" required
+             type="text" id="inputSection"><br><br>
+      <label for="teacherDropdown">Select teacher:</label><br>
       <select [(ngModel)]="inputTeacher" required name="inputTeacher" id="teacherDropdown" >
-        <option value="">Select the Classroom</option>
         <option *ngFor="let teacher of teachers" [value]="teacher.id" >{{teacher.fullName}}</option>
       </select><br><br>
-
-      <input [(ngModel)] = "inputSection" name = "inputSection" required
-             type="text" placeholder="Section"><br><br>
-
+      <label for="sectionDropdown">Select classroom:</label><br>
       <select [(ngModel)]="inputClassroom" required name="inputClassroom" id="sectionDropdown" >
-        <option value="">Select the Classroom</option>
         <option *ngFor="let classroom of classroomList" [value]="classroom.id" >{{classroom.name}}</option>
       </select><br><br>
-
-      <div style="display:flex; flex-direction: row;">
+      </div>
+        <div style="margin-left: 40px;">
+      <label for="inputDate">Select date:</label><br>
+          <div style="display:flex;">
       <input id="inputDate" placeholder="yyyy-mm-dd" style="width: 125px;"
              name="inputDate" [(ngModel)]="inputDate" ngbDatepicker #d="ngbDatepicker">
-      <button (click)="d.toggle()" style="margin-left: 0;">
+
+      <button (click)="d.toggle()" type="button" style="margin-left: 0;">
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar" viewBox="0 0 16 16">
           <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/>
         </svg>
       </button><br>
-    </div>
-
-
+          </div>
+      <label for="start">Select start time:</label><br>
       <ngb-timepicker [(ngModel)]="start" name="start" id="start"></ngb-timepicker>
-
+      <label for="end">Select end time:</label><br>
       <ngb-timepicker [(ngModel)]="end" name="end" id="end"></ngb-timepicker>
-
-
-
-
-      <!--        <select [(ngModel)] = "inputTeacher" required name="inputTeacher" id="teacherDropdown">-->
-<!--            <option value="">Select the Class teacher</option>-->
-<!--            <option *ngFor="let element of teachers" [value]="element">{{element}}</option>-->
-<!--        </select> <br><br>-->
-
-<!--        <label for="inputCapacity" >Class Capacity:</label>-->
-<!--        <input id="inputCapacity" name="inputCapacity" placeholder="50" required-->
-<!--        [(ngModel)] ="inputCapacity"/><br><br>-->
-
-<!--        <label for="inputDate" >Class Date:</label>-->
-<!--        <input id="inputDate" name="inputDate" placeholder="mm/dd/yyyy"required-->
-<!--        [(ngModel)] ="inputDate"/><br><br>-->
-
-
-
-
-
-        <button type="submit" [disabled]="!roleForm.form.valid" (click)="onSubmit()">Submit</button>
+        </div>
+      </div>
+        <button type="submit" [disabled]="!roleForm.form.valid" (click)="onSubmit()" style="margin-left: 140px">Submit</button>
 
         <div [hidden]="roleForm.valid || roleForm.pristine">
             <br>
