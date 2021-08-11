@@ -22,7 +22,7 @@ import {HttpClient, HttpClientModule} from "@angular/common/http";
 import { FormValidationService } from './services/form-validation.service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {ClassroomCreationComponent} from "./components/classroom-creation/classroom-creation.component";
-
+import { ListViewModule } from '@syncfusion/ej2-angular-lists';
 
 @NgModule({
   declarations: [
@@ -45,6 +45,7 @@ import {ClassroomCreationComponent} from "./components/classroom-creation/classr
     NgbModule,
     BrowserAnimationsModule,
     MatButtonModule,
+    ListViewModule,
   ],
   providers: [DateManageService, ClassInfoService, FormValidationService],
   bootstrap: [AppComponent]

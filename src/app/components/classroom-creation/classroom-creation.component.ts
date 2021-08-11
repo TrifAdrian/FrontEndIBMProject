@@ -1,30 +1,69 @@
-import { invalid } from '@angular/compiler/src/render3/view/util';
-import { Component, OnInit, Input } from '@angular/core';
-import { ClassInfoService } from 'src/app/services/class-info.service';
-// import { ClassMockService, Teacher, Class } from 'src/app/services/class-mock.service';
-import { FormValidationService } from 'src/app/services/form-validation.service';
-import { UserMockService } from 'src/app/services/user-mock.service';
-import {ClassService} from "../../services/class.service";
-import {Class} from "../../objects/class/class"
-import {Classdetail} from "../../objects/ClassDetail/classdetail";
+import {Component, Input, OnInit} from '@angular/core';
 import {ClassroomService} from "../../services/classroom.service";
 import {Classroom} from "../../objects/classroom/classroom";
-import {Observable} from "rxjs";
-import {NgbDateStruct} from '@ng-bootstrap/ng-bootstrap';
-import {Schedule} from "../../objects/schedule/schedule";
-import {Teacher} from "../../objects/teacher/teacher";
-import {UserService} from "../../services/user/user.service";
+import {Feature} from "../../objects/feature/feature";
 
 @Component({
   selector: 'app-classroom-creation',
   templateUrl: './classroom-creation.component.html',
-  styleUrls: ['./classroom-creation.component.css','../toolbar/toolbar.component.css']
+  styleUrls: ['./classroom-creation.component.css']
 })
 export class ClassroomCreationComponent implements OnInit {
 
-  @Input() purpose : string|null = null;
+  inputLocation !: string;
+  inputName !: string;
+  inputCapacity !: string;
+  inputFeature :string ="";
+  featureList :Feature[] = [];
+  i : number = 0
+  formSubmitted : boolean = false;
+
+  constructor(private classroomService:ClassroomService) { }
 
   ngOnInit(): void {
+    this.i=0;
   }
+
+  onSubmit() :void
+  {
+
+      if(!this.formSubmitted) {
+        let createClassroom = new Classroom();
+        createClassroom.id = 0;
+        createClassroom.name = this.inputName;
+        createClassroom.location = this.inputLocation;
+        createClassroom.capacity = parseInt(this.inputCapacity);
+        createClassroom.features_list = this.featureList;
+
+        console.log(createClassroom);
+        this.classroomService.addClassroom(createClassroom).subscribe();
+    }
+
+      this.formSubmitted = ! this.formSubmitted
+  }
+
+  addFeature() :void{
+    let f : Feature = new Feature()
+    f.id=this.i
+    f.name=this.inputFeature.trim();
+    console.log(f)
+    this.featureList.push(f)
+    this.resetField()
+  }
+
+   deleteFeature(index : number)
+  {
+    this.i--;
+    this.featureList=this.featureList.filter(x => x.id != index)
+  }
+
+  resetField(){
+    this.i++;
+    this.inputFeature=" "
+  }
+
+
+
+
 
 }

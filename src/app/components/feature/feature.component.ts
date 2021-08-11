@@ -40,7 +40,7 @@ export class FeatureComponent implements OnInit {
     // this.featureTest();
     // this.classroomTest();
     //this.classTest()
-    this.userTest();
+    //this.userTest();
   }
 
   private userTest(): void

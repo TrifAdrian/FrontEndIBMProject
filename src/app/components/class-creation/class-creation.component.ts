@@ -61,43 +61,44 @@ export class ClassCreationComponent implements OnInit {
   }
 
   onSubmit() : void{
-  let schedule : Schedule = new Schedule();
-  let date = new Date(Date.UTC(this.inputDate.year,this.inputDate.month-1,this.inputDate.day));
-  date.setUTCHours(this.start.hour);
-  date.setUTCMinutes(this.start.minute);
 
-  //console.log(date);
+    if(!this.formSubmitted)
+    {
+        this.createClass={
+        name:this.inputName,
+        year:parseInt(this.inputYear),
+        section: this.inputSection,
+        dates:[this.buildSchedule()],
+        teacherId : this.inputTeacher,
+        classroomId : parseInt(this.inputClassroom)
+      }
 
-  schedule.startTime=date.toISOString();
+      this.classService.createClass(this.createClass).subscribe();
+      console.log(this.createClass);
+    }
 
-  date.setUTCHours(this.end.hour);
-  date.setUTCMinutes(this.end.minute);
+    this.formSubmitted = ! this.formSubmitted;
+  }
 
-  // console.log(date);
+  private buildSchedule() : Schedule
+  {
+    let schedule : Schedule = new Schedule();
+    let date = new Date(Date.UTC(this.inputDate.year,this.inputDate.month-1,this.inputDate.day));
+    date.setUTCHours(this.start.hour);
+    date.setUTCMinutes(this.start.minute);
 
-  schedule.endTime=date.toISOString();
+    //console.log(date);
 
-  this.createClass={
-  name:this.inputName,
-  year:parseInt(this.inputYear),
-  section: this.inputSection,
-  dates:[schedule],
-  teacherId : this.inputTeacher,
-  classroomId : parseInt(this.inputClassroom)
+    schedule.startTime=date.toISOString();
 
- }
+    date.setUTCHours(this.end.hour);
+    date.setUTCMinutes(this.end.minute);
 
-   this.classService.createClass(this.createClass).subscribe()
+    // console.log(date);
 
-   console.log(this.createClass);
+    schedule.endTime=date.toISOString();
 
-
-    // if(!this.formSubmitted)
-    // {
-    //   //this.createClass.
-    // }
-    //
-    // this.formSubmitted = ! this.formSubmitted;
+    return schedule;
   }
 
 

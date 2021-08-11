@@ -1,5 +1,5 @@
 export enum Role {
-  GUEST,
+  GUEST =0,
   STUDENT,
   TEACHER,
   ADMIN

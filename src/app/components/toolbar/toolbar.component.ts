@@ -15,7 +15,7 @@ export class ToolbarComponent implements OnInit {
   userRole : string | null = null;
   currentUser !: User
   whatToDisplay : string = "";
-  roles : string[] = ["Guest","Student","Teacher","Admin"];
+
 
   constructor(private toggleService: ToolbarToggleService, private mockUser : UserMockService) {
 
@@ -25,6 +25,13 @@ export class ToolbarComponent implements OnInit {
 
     this.currentUser=JSON.parse(localStorage.getItem("loggedUser")!)
 
+    switch (this.currentUser.role.toString())
+    {
+      case "TEACHER": this.userRole="Teacher"; break;
+      case "STUDENT": this.userRole="Student"; break;
+      case "GUEST": this.userRole="Guest"; break;
+      case "ADMIN": this.userRole="Admin"; break;
+    }
 
 
     this.whatToDisplay = this.toggleService.activeWindow;
