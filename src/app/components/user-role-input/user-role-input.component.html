@@ -2,17 +2,18 @@
 
     <form (ngSubmit)="onSubmit()" #roleForm="ngForm">
 
-        <input [(ngModel)] = "inputFirst" name = "inputFirst" required
-        type="text" id="fname" placeholder="First Name" value={{inputFirst}}><br><br>
-        <input [(ngModel)] = "inputLast" name = "inputLast" required
-        type="text" id="lname" placeholder="Last Name" value={{inputLast}}><br><br>
+<!--        <input [(ngModel)] = "inputFirst" name = "inputFirst" required-->
+<!--        type="text" id="fname" placeholder="First Name" value={{inputFirst}}><br><br>-->
+<!--        <input [(ngModel)] = "inputLast" name = "inputLast" required-->
+<!--        type="text" id="lname" placeholder="Last Name" value={{inputLast}}><br><br>-->
 
-        
-        
-        <select [(ngModel)] = "inputRole" required name="inputRole" id="roleDropdown">
-            <option value="">Select your Role</option>
-            <option *ngFor="let element of roles" [value]="element">{{element}}</option>
-        </select> <br><br>
+
+
+      <label for="userDropdown" style="margin-left: 6px">Select user:</label>
+      <select [(ngModel)] = "inputUser" required name="inputUser" id="userDropdown">
+<!--        <option value="">Select User</option>-->
+        <option *ngFor="let element of users" [value]="element.id">{{element.name}}-{{element.role}}</option>
+      </select> <br><br>
 
         <button type="submit" [disabled]="!roleForm.form.valid">Submit</button>
 
@@ -20,6 +21,6 @@
             <br>
             <p>Fill all fields.</p>
         </div>
-        
+
     </form>
 </div>

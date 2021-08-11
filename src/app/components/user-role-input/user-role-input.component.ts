@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { UserMockService, User } from '../../services/user-mock.service';
+
 import { UserManageService } from '../../services/user-manage.service';
 import { ToolbarToggleService } from '../../services/toolbar-toggle.service';
+import {User} from "../../objects/user/user";
+import {UserService} from "../../services/user/user.service";
+import {stringify} from "@angular/compiler/src/util";
 
 @Component({
   selector: 'app-user-role-input',
@@ -10,36 +13,39 @@ import { ToolbarToggleService } from '../../services/toolbar-toggle.service';
 })
 export class UserRoleInputComponent implements OnInit {
 
-  constructor(private mock : UserMockService) { }
+  constructor(private userService:UserService) {
+    this.userService.getAllUsers().subscribe(x => this.users =x);
+  }
 
-  roles : String[] = [];
-  user : User = new User("","","");
+  users ?: User[];
+  inputUser !: number;
+  currentUser !:User;
 
-  inputFirst : string|null = ""
-  inputLast : string|null = ""
-  inputRole : string|null = ""
-  
   ngOnInit(): void {
-    this.getMockRoles();
-    this.user = this.mock.getSavedUser();
-    this.reloadSavedValues();
   }
 
   reloadSavedValues() : void
   {
-    this.inputFirst = this.user.firstName;
-    this.inputLast  = this.user.lastName;
-    this.inputRole  = this.user.role;
+    // this.inputFirst = this.user.firstName;
+    // this.inputLast  = this.user.lastName;
+    // this.inputRole  = this.user.role;
   }
 
   getMockRoles(): void {
-    this.mock.getArrayRoles()
-    .subscribe(roles => this.roles = roles);
+    // this.mock.getArrayRoles()
+    // .subscribe(roles => this.roles = roles);
   }
 
   onSubmit(): void
   {
-    this.mock.saveToLocal(new User(this.inputFirst,this.inputLast,this.inputRole));
+    this.users = this.users?.filter(x => x.id == this.inputUser)
+    this.currentUser=this.users?.pop()!;
+
+    localStorage.setItem("loggedUser",JSON.stringify(this.currentUser));
+    console.log(JSON.parse(localStorage.getItem("loggedUser")!))
+
+    //localStorage.setItem("role",stringify(this.currentUser.role));
+
     window.location.reload();
   }
 }

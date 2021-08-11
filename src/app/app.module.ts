@@ -13,15 +13,15 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatButtonModule} from '@angular/material/button';
 import { ScheduleEntryComponent } from './components/schedule-entry/schedule-entry.component';
-import { ToolbarToggleService } from './services/toolbar-toggle.service';
+
 import { ClassInfoService } from './services/class-info.service';
 import { DateManageService } from './services/date-manage.service';
-import { FeatureComponent } from './components/feature/feature.component';
 import {HttpClient, HttpClientModule} from "@angular/common/http";
-import {DatePipe} from "@angular/common";
+
 import { FormValidationService } from './services/form-validation.service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-
+import {ClassroomCreationComponent} from "./components/classroom-creation/classroom-creation.component";
+import { ListViewModule } from '@syncfusion/ej2-angular-lists';
 
 @NgModule({
   declarations: [
@@ -32,7 +32,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     ToolbarComponent,
     ClassCreationComponent,
     ScheduleEntryComponent,
-    FeatureComponent
+    ClassroomCreationComponent,
   ],
   imports: [
     BrowserModule,
@@ -43,7 +43,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     NgbModule,
     BrowserAnimationsModule,
     MatButtonModule,
-    NgbModule,
+    ListViewModule,
   ],
   providers: [DateManageService, ClassInfoService, FormValidationService],
   bootstrap: [AppComponent]

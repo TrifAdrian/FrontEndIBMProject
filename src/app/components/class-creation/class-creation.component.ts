@@ -12,6 +12,8 @@ import {Classroom} from "../../objects/classroom/classroom";
 import {Observable} from "rxjs";
 import {NgbDateStruct} from '@ng-bootstrap/ng-bootstrap';
 import {Schedule} from "../../objects/schedule/schedule";
+import {Teacher} from "../../objects/teacher/teacher";
+import {UserService} from "../../services/user/user.service";
 
 @Component({
   selector: 'app-class-creation',
@@ -26,10 +28,10 @@ export class ClassCreationComponent implements OnInit {
   inputName : string = "";
   inputYear : string = "";
   inputSection : string = "";
-  inputTeacher : string = "";
+  inputTeacher !: number;
   // inputCapacity : string = "";
   inputClassroom : string="";
-  // teachers : Teacher[] = [];
+  teachers : Teacher[] = [];
   sections : string[] = [];
   start!: {hour:number,minute:number};
   end!: {hour:number,minute:number};
@@ -46,90 +48,57 @@ export class ClassCreationComponent implements OnInit {
               private classInfo : ClassInfoService,
               private formValidation: FormValidationService,
               private classService:ClassService,
-              private classroomService:ClassroomService)
+              private classroomService:ClassroomService,
+              private userService:UserService)
   {
     this.classroomService.getClassrooms().subscribe(x => this.classroomList = x);
+    this.userService.getAllTeachers().subscribe(y=> this.teachers = y);
 
 
   }
 
   ngOnInit(): void {
-
-    // this.getMockTeachers();
-    // this.getMockSections();
-    // if(this.purpose=="editClass")
-    // {
-    //   this.targetClass = this.classInfo.getTarget();
-    //   this.loadDefaultInputs();
-    // }
-
-  }
-
-  loadDefaultInputs(){
-    // if(!!this.targetClass){
-    //     this.inputName=this.targetClass?.name;
-    //     this.inputDate=this.targetClass?.getDate();
-    //     this.inputYear=""+this.targetClass.year;
-    //     this.inputSection=this.targetClass.section;
-    //     this.inputTeacher=this.targetClass.teacher;
-    //     this.inputCapacity=""+this.targetClass.capacity;
-    //     this.start=this.targetClass.end;
-    //     this.end=this.targetClass.start;
-    //
-    // }
-  }
-
-  getMockTeachers(): void {
-    // this.classMock.getArrayTeachers("")
-    // .subscribe(teachers => this.teachers = teachers);
-  }
-
-  getMockSections(): void {
-    // this.classMock.getArraySections()
-    // .subscribe(sections => this.sections = sections);
   }
 
   onSubmit() : void{
+
+    if(!this.formSubmitted)
+    {
+        this.createClass={
+        name:this.inputName,
+        year:parseInt(this.inputYear),
+        section: this.inputSection,
+        dates:[this.buildSchedule()],
+        teacherId : this.inputTeacher,
+        classroomId : parseInt(this.inputClassroom)
+      }
+
+      this.classService.createClass(this.createClass).subscribe();
+      console.log(this.createClass);
+    }
+
+    this.formSubmitted = ! this.formSubmitted;
+  }
+
+  private buildSchedule() : Schedule
+  {
     let schedule : Schedule = new Schedule();
-   let date = new Date(Date.UTC(this.inputDate.year,this.inputDate.month-1,this.inputDate.day));
-   date.setUTCHours(this.start.hour);
-   date.setUTCMinutes(this.start.minute);
+    let date = new Date(Date.UTC(this.inputDate.year,this.inputDate.month-1,this.inputDate.day));
+    date.setUTCHours(this.start.hour);
+    date.setUTCMinutes(this.start.minute);
 
-   //console.log(date);
+    //console.log(date);
 
-   schedule.startTime=date.toISOString();
+    schedule.startTime=date.toISOString();
 
-   date.setUTCHours(this.end.hour);
-   date.setUTCMinutes(this.end.minute);
+    date.setUTCHours(this.end.hour);
+    date.setUTCMinutes(this.end.minute);
 
-   //console.log(date);
+    // console.log(date);
 
-   schedule.endTime=date.toISOString();
+    schedule.endTime=date.toISOString();
 
-   this.createClass={
-      name:this.inputName,
-      year:parseInt(this.inputYear),
-      section: this.inputSection,
-      dates:[schedule],
-      teacherId : 1,
-      classroomId : parseInt(this.inputClassroom)
-
-
-   }
-
-   this.classService.createClass(this.createClass).subscribe()
-
-   console.log(this.createClass);
-
-
-
-
-    // if(!this.formSubmitted)
-    // {
-    //   //this.createClass.
-    // }
-    //
-    // this.formSubmitted = ! this.formSubmitted;
+    return schedule;
   }
 
 

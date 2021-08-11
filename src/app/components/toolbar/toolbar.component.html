@@ -1,10 +1,14 @@
-<mat-toolbar id="toolbar"> 
+<mat-toolbar id="toolbar">
     <p>Check-in Platform </p>
 
     <button class="toolbarButton"
-     mat-raised-button (click)="toggle('role')" >Update Role</button>
-    <button *ngIf="userRole != 'Student' && userRole != null" class="toolbarButton"
-     mat-raised-button (click)="toggle('create')" >Create Class</button>
+            mat-raised-button (click)="toggle('role')" >Update Role</button>
+
+    <button *ngIf=" (userRole == 'Teacher' || userRole=='Admin') && userRole!=null" class="toolbarButton"
+            mat-raised-button (click)="toggle('create')" >Create Class</button>
+
+    <button *ngIf="userRole == 'Admin' && userRole != null" class="toolbarButton"
+            mat-raised-button (click)="toggle('createClassroom')" >Create Classroom</button>
 </mat-toolbar>
 
 <span *ngIf="whatToDisplay == 'role'">
@@ -13,6 +17,10 @@
 
 <span  *ngIf="whatToDisplay == 'create'">
     <app-class-creation></app-class-creation>
+</span>
+
+<span  *ngIf="whatToDisplay == 'createClassroom'">
+    <app-classroom-creation></app-classroom-creation>
 </span>
 
 <span *ngIf="whatToDisplay == 'classInfo'">

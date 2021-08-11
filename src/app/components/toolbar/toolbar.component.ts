@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { UserMockService } from 'src/app/services/user-mock.service';
 import { ToolbarToggleService } from '../../services/toolbar-toggle.service';
+import {Role} from "../../objects/role";
+import {User} from "../../objects/user/user";
+import {stringify} from "@angular/compiler/src/util";
 
 @Component({
   selector: 'app-toolbar',
@@ -8,17 +11,33 @@ import { ToolbarToggleService } from '../../services/toolbar-toggle.service';
   styleUrls: ['./toolbar.component.css']
 })
 export class ToolbarComponent implements OnInit {
-	
-  constructor(private toggleService: ToolbarToggleService, private mockUser : UserMockService) { }
+
+  userRole : string | null = null;
+  currentUser !: User
+  whatToDisplay : string = "";
+
+
+  constructor(private toggleService: ToolbarToggleService) {
+
+  }
 
   ngOnInit(): void {
-    this.userRole = this.mockUser.getUserRole();
+
+    this.currentUser=JSON.parse(localStorage.getItem("loggedUser")!)
+
+    switch (this.currentUser.role.toString())
+    {
+      case "TEACHER": this.userRole="Teacher"; break;
+      case "STUDENT": this.userRole="Student"; break;
+      case "GUEST": this.userRole="Guest"; break;
+      case "ADMIN": this.userRole="Admin"; break;
+    }
+
+
     this.whatToDisplay = this.toggleService.activeWindow;
   }
 
-  userRole : string|null = null ;
 
-  whatToDisplay : string = "";
 
   toggle(name : string)
   {

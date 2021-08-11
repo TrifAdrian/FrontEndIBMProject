@@ -4,7 +4,7 @@
     font-family:'Didot';
     color:rgb(68, 151, 130);
     background-color:rgb(14, 54, 48);
-    
+
 }
 
 #toolbar p{
@@ -13,7 +13,7 @@
 }
 
 .toolbarButton
-{   
+{
     font-weight: bold;
     font-variant: small-caps;
     font-family:'Trebuchet MS';
