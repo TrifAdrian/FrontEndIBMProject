@@ -6,6 +6,9 @@ import {ClassroomService} from "../../services/classroom.service";
 import {ClassService} from "../../services/class.service";
 import {Classdetail} from "../../objects/ClassDetail/classdetail";
 import {ClassEnrollStudent} from "../../objects/ClassEnrollStudent/class-enroll-student";
+import {UserService} from "../../services/user/user.service";
+import {User} from "../../objects/user/user";
+import {Teacher} from "../../objects/teacher/teacher";
 
 @Component({
   selector: 'app-feature',
@@ -24,17 +27,29 @@ export class FeatureComponent implements OnInit {
   x !:string
   teststud !: ClassEnrollStudent
 
+  u ?: User[];
+  t ?: Teacher[];
+
   constructor(private featureService : FeatureService,
               private classroomService : ClassroomService,
               private classService:ClassService,
+              private userService:UserService
              ) { }
 
   ngOnInit(): void {
     // this.featureTest();
     // this.classroomTest();
-    this.classTest()
+    //this.classTest()
+    this.userTest();
   }
 
+  private userTest(): void
+  {
+
+    this.userService.getAllUsers().subscribe(x => console.log(x));
+    this.userService.getAllTeachers().subscribe(x => console.log(x))
+
+  }
 
   private featureTest() :void
   {
@@ -131,6 +146,8 @@ export class FeatureComponent implements OnInit {
     }
 
     this.classService.enrollStudent(this.teststud).subscribe()
+
+
 
   }
 

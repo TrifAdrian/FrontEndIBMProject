@@ -6,24 +6,29 @@
         type="text" placeholder="Class Name"><br><br>
         <input [(ngModel)] = "inputYear" name = "inputYear" required
         type="text" placeholder="Class Year"><br><br>
-      <input [(ngModel)] = "inputTeacher" name = "inputTeacher" required
-             type="text" placeholder="Teacher"><br><br>
+
+      <select [(ngModel)]="inputTeacher" required name="inputTeacher" id="teacherDropdown" >
+        <option value="">Select the Classroom</option>
+        <option *ngFor="let teacher of teachers" [value]="teacher.id" >{{teacher.fullName}}</option>
+      </select><br><br>
+
       <input [(ngModel)] = "inputSection" name = "inputSection" required
              type="text" placeholder="Section"><br><br>
 
-      <select [(ngModel)]="inputClassroom" required name="inputClassroom" id="sectionDropdown">
+      <select [(ngModel)]="inputClassroom" required name="inputClassroom" id="sectionDropdown" >
         <option value="">Select the Classroom</option>
         <option *ngFor="let classroom of classroomList" [value]="classroom.id" >{{classroom.name}}</option>
       </select><br><br>
 
-      #DE EDITAT :)
-            <input id="inputDate" placeholder="yyyy-mm-dd"
-                   name="inputDate" [(ngModel)]="inputDate" ngbDatepicker #d="ngbDatepicker">
-              <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar" viewBox="0 0 16 16">
-                  <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/>
-                </svg>
-              </button>
+      <div style="display:flex; flex-direction: row;">
+      <input id="inputDate" placeholder="yyyy-mm-dd" style="width: 125px;"
+             name="inputDate" [(ngModel)]="inputDate" ngbDatepicker #d="ngbDatepicker">
+      <button (click)="d.toggle()" style="margin-left: 0;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar" viewBox="0 0 16 16">
+          <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/>
+        </svg>
+      </button><br>
+    </div>
 
 
       <ngb-timepicker [(ngModel)]="start" name="start" id="start"></ngb-timepicker>
