@@ -7,4 +7,6 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Check-in';
+
+  model = {hour:10,minute:10}
 }

@@ -12,6 +12,8 @@ import {Classroom} from "../../objects/classroom/classroom";
 import {Observable} from "rxjs";
 import {NgbDateStruct} from '@ng-bootstrap/ng-bootstrap';
 import {Schedule} from "../../objects/schedule/schedule";
+import {Teacher} from "../../objects/teacher/teacher";
+import {UserService} from "../../services/user/user.service";
 
 @Component({
   selector: 'app-class-creation',
@@ -26,10 +28,10 @@ export class ClassCreationComponent implements OnInit {
   inputName : string = "";
   inputYear : string = "";
   inputSection : string = "";
-  inputTeacher : string = "";
+  inputTeacher !: number;
   // inputCapacity : string = "";
   inputClassroom : string="";
-  // teachers : Teacher[] = [];
+  teachers : Teacher[] = [];
   sections : string[] = [];
   start!: {hour:number,minute:number};
   end!: {hour:number,minute:number};
@@ -46,9 +48,11 @@ export class ClassCreationComponent implements OnInit {
               private classInfo : ClassInfoService,
               private formValidation: FormValidationService,
               private classService:ClassService,
-              private classroomService:ClassroomService)
+              private classroomService:ClassroomService,
+              private userService:UserService)
   {
     this.classroomService.getClassrooms().subscribe(x => this.classroomList = x);
+    this.userService.getAllTeachers().subscribe(y=> this.teachers = y);
 
 
   }
@@ -114,14 +118,11 @@ export class ClassCreationComponent implements OnInit {
       teacherId : 1,
       classroomId : parseInt(this.inputClassroom)
 
-
    }
 
    this.classService.createClass(this.createClass).subscribe()
 
    console.log(this.createClass);
-
-
 
 
     // if(!this.formSubmitted)
