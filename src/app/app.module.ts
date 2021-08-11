@@ -16,7 +16,6 @@ import { ScheduleEntryComponent } from './components/schedule-entry/schedule-ent
 
 import { ClassInfoService } from './services/class-info.service';
 import { DateManageService } from './services/date-manage.service';
-import { FeatureComponent } from './components/feature/feature.component';
 import {HttpClient, HttpClientModule} from "@angular/common/http";
 
 import { FormValidationService } from './services/form-validation.service';
@@ -33,8 +32,7 @@ import { ListViewModule } from '@syncfusion/ej2-angular-lists';
     ToolbarComponent,
     ClassCreationComponent,
     ScheduleEntryComponent,
-    FeatureComponent,
-    ClassroomCreationComponent
+    ClassroomCreationComponent,
   ],
   imports: [
     BrowserModule,

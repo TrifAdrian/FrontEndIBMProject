@@ -6,7 +6,7 @@ import {Feature} from "../../objects/feature/feature";
 @Component({
   selector: 'app-classroom-creation',
   templateUrl: './classroom-creation.component.html',
-  styleUrls: ['./classroom-creation.component.css']
+  styleUrls: ['./classroom-creation.component.css','../toolbar/toolbar.component.css']
 })
 export class ClassroomCreationComponent implements OnInit {
 
@@ -61,9 +61,5 @@ export class ClassroomCreationComponent implements OnInit {
     this.i++;
     this.inputFeature=" "
   }
-
-
-
-
 
 }

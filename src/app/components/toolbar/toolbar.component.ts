@@ -17,7 +17,7 @@ export class ToolbarComponent implements OnInit {
   whatToDisplay : string = "";
 
 
-  constructor(private toggleService: ToolbarToggleService, private mockUser : UserMockService) {
+  constructor(private toggleService: ToolbarToggleService) {
 
   }
 

@@ -1,6 +1,6 @@
 #createForm{
   padding-right: 5ex;
-  width: 400px;
+  width: 460px;
 }
 button{
   background-color: #ece5d8;
@@ -29,6 +29,4 @@ input{
   border: solid;
   border-color: rgb(84, 77, 85);
 }
-#form{
-  width: 250px;
-}
+
