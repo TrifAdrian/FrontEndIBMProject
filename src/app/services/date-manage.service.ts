@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Class } from '../objects/class/class';
 
 @Injectable({
   providedIn: 'root'
@@ -41,7 +42,33 @@ export class DateManageService {
     return 1;
   }
 
-  dateInWeek(date: Date)
+  getMatchingDate(dates : Date[]) : Date | null
+  {
+    for(let i = 0 ; i<dates.length;i++)
+    {
+      if(this.dateInWeek(dates[i]))
+      {
+        return dates[i];
+      }
+    }
+
+    return null;
+
+    
+  }
+
+  anyDateInWeek(dates : Date[]) : boolean
+  {
+    for(let i = 0 ; i<dates.length;i++)
+    {
+      if(this.dateInWeek(dates[i]))
+      {
+        return true;
+      }
+    }
+    return false;
+  }
+  dateInWeek(date: Date) : boolean
   {
     let afterSevenDays : Date = new Date(this.getDate());
     afterSevenDays.setDate(afterSevenDays.getDate() + 7);
@@ -51,6 +78,8 @@ export class DateManageService {
 
   equalMonthYear(date1 : Date, date2 : Date) : boolean
   {
+    console.log(date1.getMonth());
+    console.log(date2.getMonth());
     return date1.getMonth() == date2.getMonth() &&
            date1.getFullYear() == date2.getFullYear();
   }

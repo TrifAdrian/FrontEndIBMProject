@@ -8,16 +8,19 @@ export class FormValidationService {
   constructor() { }
   validDate(date: Date):boolean{
     let actualDate = new Date(date);
-    if(this.checkIfDate(actualDate))
-    return true;
+    if(this.checkIfDate(actualDate) && this.isWorkDay(actualDate))
+      return true;
 
     return false;
   }
   
   checkIfDate(date: Date): boolean{
     return date.getTime() === date.getTime();
-   
   }  
+
+  isWorkDay(date : Date) : boolean{
+    return date.getDay() != 0 && date.getDay() != 6;
+  }
   validTime(hour: string):boolean{
     let parts: string[];
     parts=hour.split(":");

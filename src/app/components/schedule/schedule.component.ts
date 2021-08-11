@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ToolbarToggleService } from 'src/app/services/toolbar-toggle.service';
-import { Class } from 'src/app/services/class-mock.service';
+import { Class } from 'src/app/objects/class/class';
 import { ClassInfoService } from 'src/app/services/class-info.service';
 import { DateManageService } from 'src/app/services/date-manage.service';
 @Component({

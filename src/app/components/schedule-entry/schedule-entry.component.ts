@@ -1,5 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ClassMockService,Class } from 'src/app/services/class-mock.service';
+import { Class } from 'src/app/objects/class/class';
+import { ClassInfoService } from 'src/app/services/class-info.service';
+import { ClassMockService} from 'src/app/services/class-mock.service';
+import { DateManageService } from 'src/app/services/date-manage.service';
 import { ClassCreationComponent } from '../class-creation/class-creation.component';
 
 @Component({
@@ -15,13 +18,32 @@ export class ScheduleEntryComponent implements OnInit {
   name : string | undefined = "";
   room : string | undefined = "";
 
-  constructor() {}
+  constructor(private dateManageService : DateManageService,
+              private classInfoService : ClassInfoService) {}
+
+  matchingDate : Date | null = new Date();
 
   ngOnInit(): void {
-    this.start=this.classroom?.start;
-    this.end=this.classroom?.end;
+    if(this.classroom != null)
+      this.matchingDate = this.getMatchingDateForClass(this.classroom);
+
+    if(this.matchingDate != null)
+    {
+      this.start=0;
+      this.end=this.classroom?.end;
+    }
     this.name=this.classroom?.name;
     this.room=this.classroom?.classroom;
+
   }
 
+  getHourMinutes(date : Date) : String
+  {
+    return date.getHours() + "" + date.getMinutes();
+  }
+
+  getMatchingDateForClass(target : Class) : Date | null
+  {
+    return this.dateManageService.getMatchingDate(this.classInfoService.getClassDates(target));
+  }
 }

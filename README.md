@@ -5,6 +5,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 ## Dependencies
 
 ng add @angular/material
+ng add @ng-bootstrap/ng-bootstrap
 
 ## Development server
 

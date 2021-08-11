@@ -10,5 +10,4 @@ export class Class {
   classroom ?: Classroom;
   teacher ?: string;
   dateList ?: Schedule[];
-
 }

@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
-import { ClassMockService,Class, Teacher } from './class-mock.service';
+import { ClassMockService, Teacher } from './class-mock.service';
 import { DateManageService } from './date-manage.service';
 import {ClassService} from "./class.service";
+import {Class} from "../objects/class/class";
+import { Schedule } from '../objects/schedule/schedule';
 
 
 @Injectable({
@@ -9,14 +11,16 @@ import {ClassService} from "./class.service";
 })
 export class ClassInfoService {
 
-  public classes : Class[] = this.mockClasses();
+  public classes : Class[] = [];
   public teachers : Teacher[] = [];
   public sections : string[] = [];
   public days:number[] = [1, 2, 3, 4, 5];
   public target : number = 0;
 
 
-  constructor(private classMock : ClassMockService, private dateManage : DateManageService) {
+  constructor(private classMock : ClassMockService,
+              private dateManage : DateManageService,
+              private classService : ClassService) {
     this.refreshClasses();
     this.getMockSections();
     this.getMockTeachers();
@@ -24,18 +28,45 @@ export class ClassInfoService {
 
   public refreshClasses()
   {
-    this.getMockClasses();
+    this.getClassesDB();
     this.classes = this.getClassesByWeek();
   }
 
-  private getMockClasses(): void {
-    this.classMock.getArrayClasses(3)
-    .subscribe(classes => this.classes = classes);
+  public getStart(target : Class, date : Date)
+  {
+    if(target.dateList !== undefined )
+    {
+      for(let i = 0 ; i < target.dateList.length;i=i+1)
+      {
+        if(this.dateManage.getMatchingDate(this.getClassDates(target)))
+
+      }
+    }
+  }
+
+
+  private getClassesDB(): void
+  {
+    this.classService.getClasses().subscribe(x => this.classes = x);
+  }
+
+  getClassDates(target:Class) : Date[]
+  {
+    let result : Date[] = [];
+    if(target.dateList !== undefined )
+    {
+      for(let i = 0; i<target.dateList.length; i++)
+      {
+        result.push(new Date(target.dateList[i].startTime));
+      }
+    }
+
+    return result;
   }
 
   getClassByID(target : number) : Class | null
   {
-    this.getMockClasses();
+    this.getClassesDB();
     for(let i : number = 0; i<this.classes.length; i=i+1)
     {
       if(this.classes[i].id == target)
@@ -49,19 +80,13 @@ export class ClassInfoService {
     return this.getClassByID(this.target);
   }
 
-  mockClasses(): Class[]
-  {
-    this.getMockClasses();
-    return this.classes;
-  }
-
   getClassesByWeek()
   {
     let result : Class[] = [];
 
     for(let i : number = 0;i<this.classes.length; i=i+1)
     {
-      if(this.dateManage.dateInWeek(this.classes[i].date))
+      if(this.dateManage.anyDateInWeek(this.getClassDates(this.classes[i])))
           result.push(this.classes[i]);
     }
     return result;
@@ -70,12 +95,26 @@ export class ClassInfoService {
   getClassesByDay(day : number) : Class[]
   {
     let result : Class[] = [];
+    console.log(this.classes);
     for(let i : number = 0;i<this.classes.length; i=i+1)
     {
-      if(this.classes[i].date.getDay()==day)
+      for(let j = 0 ; this.classes[i].dateList?.length; j = j + 1)
+      {
+        if(this.classes[i].dateList !== undefined && 
+           this.doesClassDayMatch(this.classes[i],day))
         result.push(this.classes[i]);
+      }
     }
+    console.log(result);
     return result;
+  }
+
+  doesClassDayMatch(target : Class, day : number) : boolean
+  {
+    let matchingDate = this.dateManage.getMatchingDate(this.getClassDates(target));
+    if(matchingDate != null)
+      return matchingDate.getDay() == day;
+    return false;
   }
 
   constructClassMatrix() : Class[][]
@@ -104,4 +143,11 @@ export class ClassInfoService {
     this.classMock.getArraySections()
     .subscribe(sections => this.sections = sections);
   }
+
+    /*
+  private getMockClasses(): void {
+    this.classMock.getArrayClasses(3)
+    .subscribe(classes => this.classes = classes);
+  }
+  */
 }

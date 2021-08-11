@@ -60,7 +60,7 @@ export class ClassMockService {
     result.push(this.getClass(new Date("2021-8-3"),3));
 
     result.push(this.getClass(new Date("2021-8-4"),4));
-    result.push(this.getClass(new Date("2021-7-4"),5));
+    result.push(this.getClass(new Date("2021-7-5"),5));
 
     return result
   }
