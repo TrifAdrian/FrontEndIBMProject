@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
+import {ClassService} from "./class.service";
 
 @Injectable({
   providedIn: 'root'
@@ -45,12 +46,12 @@ export class ClassMockService {
   private getClasses(number : number) : Class[]
   {
     let result : Class[] = [];
-    /*
-    for(let i : number = 0;i<number;i=i+1)
-    {
-      result.push(this.getClass(date,i));
-    }
-    */
+
+    // for(let i : number = 0;i<number;i=i+1)
+    // {
+    //   result.push(this.getClass(date,i));
+    // }
+
     result.push(this.getClass(new Date("2021-8-2"),0));
     result.push(this.getClass(new Date("2021-8-2"),1));
 
@@ -59,7 +60,7 @@ export class ClassMockService {
     result.push(this.getClass(new Date("2021-8-3"),3));
 
     result.push(this.getClass(new Date("2021-8-4"),4));
-    result.push(this.getClass(new Date("2021-8-4"),5));
+    result.push(this.getClass(new Date("2021-7-4"),5));
 
     return result
   }
@@ -93,7 +94,7 @@ export class Class
       return "" + date.getDate() + "/" + (date.getMonth()+1) + "/" + date.getFullYear();
     return "";
   }
-  
+
 }
 
 export class Teacher

@@ -1,37 +1,54 @@
-<div id="createForm" class="toggleForm">
+<div id="createForm" class="toggleForm" xmlns="http://www.w3.org/1999/html">
 
-    <form (ngSubmit)="onSubmit()" #roleForm="ngForm">
+    <form id="form"(ngSubmit)="onSubmit()" #roleForm="ngForm">
 
         <input [(ngModel)] = "inputName" name = "inputName" required
         type="text" placeholder="Class Name"><br><br>
         <input [(ngModel)] = "inputYear" name = "inputYear" required
         type="text" placeholder="Class Year"><br><br>
+      <input [(ngModel)] = "inputTeacher" name = "inputTeacher" required
+             type="text" placeholder="Teacher"><br><br>
+      <input [(ngModel)] = "inputSection" name = "inputSection" required
+             type="text" placeholder="Section"><br><br>
 
-        <select [(ngModel)] = "inputSection" required name="inputSection" id="sectionDropdown">
-            <option value="">Select the Class section</option>
-            <option *ngFor="let element of sections" [value]="element">{{element}}</option>
-        </select> <br><br>
+      <select [(ngModel)]="inputClassroom" required name="inputClassroom" id="sectionDropdown">
+        <option value="">Select the Classroom</option>
+        <option *ngFor="let classroom of classroomList" [value]="classroom.id" >{{classroom.name}}</option>
+      </select><br><br>
 
-        <select [(ngModel)] = "inputTeacher" required name="inputTeacher" id="teacherDropdown">
-            <option value="">Select the Class teacher</option>
-            <option *ngFor="let element of teachers" [value]="element">{{element}}</option>
-        </select> <br><br>
+      #DE EDITAT :)
+            <input id="inputDate" placeholder="yyyy-mm-dd"
+                   name="inputDate" [(ngModel)]="inputDate" ngbDatepicker #d="ngbDatepicker">
+              <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar" viewBox="0 0 16 16">
+                  <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/>
+                </svg>
+              </button>
 
-        <label for="inputCapacity" >Class Date:</label>
-        <input id="inputCapacity" name="inputCapacity" placeholder="50" required
-        [(ngModel)] ="inputCapacity"/><br><br>
 
-        <label for="inputDate" >Class Date:</label>
-        <input id="inputDate" name="inputDate" placeholder="mm/dd/yyyy"required 
-        [(ngModel)] ="inputDate"/><br><br>
+      <ngb-timepicker [(ngModel)]="start" name="start" id="start"></ngb-timepicker>
 
-        <label for="inputStart">Start of Class:</label><br>
-        <input id = "inputStart" name ="inputStart" placeholder="hh:mm"required [(ngModel)] ="start"><br>
-        <label for="inputEnd">End of Class:</label><br>
-        <input id = "inputEnd"name= "inputEnd" placeholder="hh:mm"required [(ngModel)]="end">
-        <br><br>
+      <ngb-timepicker [(ngModel)]="end" name="end" id="end"></ngb-timepicker>
 
-    
+
+
+
+      <!--        <select [(ngModel)] = "inputTeacher" required name="inputTeacher" id="teacherDropdown">-->
+<!--            <option value="">Select the Class teacher</option>-->
+<!--            <option *ngFor="let element of teachers" [value]="element">{{element}}</option>-->
+<!--        </select> <br><br>-->
+
+<!--        <label for="inputCapacity" >Class Capacity:</label>-->
+<!--        <input id="inputCapacity" name="inputCapacity" placeholder="50" required-->
+<!--        [(ngModel)] ="inputCapacity"/><br><br>-->
+
+<!--        <label for="inputDate" >Class Date:</label>-->
+<!--        <input id="inputDate" name="inputDate" placeholder="mm/dd/yyyy"required-->
+<!--        [(ngModel)] ="inputDate"/><br><br>-->
+
+
+
+
 
         <button type="submit" [disabled]="!roleForm.form.valid" (click)="onSubmit()">Submit</button>
 
@@ -39,6 +56,6 @@
             <br>
             <p>Please fill in all of the fields.</p>
         </div>
-        
+
     </form>
 </div>

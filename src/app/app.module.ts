@@ -20,6 +20,7 @@ import { FeatureComponent } from './components/feature/feature.component';
 import {HttpClient, HttpClientModule} from "@angular/common/http";
 import {DatePipe} from "@angular/common";
 import { FormValidationService } from './services/form-validation.service';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -39,8 +40,10 @@ import { FormValidationService } from './services/form-validation.service';
     FormsModule,
     HttpClientModule,
     MatToolbarModule,
+    NgbModule,
     BrowserAnimationsModule,
     MatButtonModule,
+    NgbModule,
   ],
   providers: [DateManageService, ClassInfoService, FormValidationService],
   bootstrap: [AppComponent]

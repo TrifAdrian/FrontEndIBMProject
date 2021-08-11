@@ -92,7 +92,7 @@ export class FeatureComponent implements OnInit {
 
     let date = new Date("2021-08-08T16:45:02+0000")
 
-    console.log(date.getHours(),date.getMinutes())
+    console.log(date)
     //console.log(date.getFullYear(),date.getMonth() + 1,date.getDate(),date.getUTCHours() ,date.getMinutes())
 
     this.classdummy ={
@@ -126,11 +126,11 @@ export class FeatureComponent implements OnInit {
     //this.classService.editClass(1,this.editclass).subscribe()
 
     this.teststud={
-      classId:4,
-      studentId:1
+      classId:2,
+      studentId:3
     }
 
-    //this.classService.enrollStudent(this.teststud).subscribe()
+    this.classService.enrollStudent(this.teststud).subscribe()
 
   }
 
