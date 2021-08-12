@@ -1,7 +1,10 @@
 import { Injectable } from '@angular/core';
-import { ClassMockService,Class, Teacher } from './class-mock.service';
+import { ClassMockService, Teacher } from './class-mock.service';
 import { DateManageService } from './date-manage.service';
 import {ClassService} from "./class.service";
+import {Class} from "../objects/class/class";
+import { Schedule } from '../objects/schedule/schedule';
+import { Classroom } from '../objects/classroom/classroom';
 
 
 @Injectable({
@@ -9,14 +12,18 @@ import {ClassService} from "./class.service";
 })
 export class ClassInfoService {
 
-  public classes : Class[] = this.mockClasses();
+  public classes : Class[] = [];
+  public classEntries : ClassEntry[] = [];
+  public matrix : ClassEntry[][] = [];
   public teachers : Teacher[] = [];
   public sections : string[] = [];
   public days:number[] = [1, 2, 3, 4, 5];
   public target : number = 0;
 
 
-  constructor(private classMock : ClassMockService, private dateManage : DateManageService) {
+  constructor(private classMock : ClassMockService,
+              private dateManage : DateManageService,
+              private classService : ClassService) {
     this.refreshClasses();
     this.getMockSections();
     this.getMockTeachers();
@@ -24,18 +31,77 @@ export class ClassInfoService {
 
   public refreshClasses()
   {
-    this.getMockClasses();
-    this.classes = this.getClassesByWeek();
+    this.getClassesDB();
+    this.matrix = this.constructClassMatrix();
+
   }
 
-  private getMockClasses(): void {
-    this.classMock.getArrayClasses(3)
-    .subscribe(classes => this.classes = classes);
+  private getClassesDB(): void
+  {
+    this.classService.getClasses().subscribe(x => this.classes = x);
+  }
+
+  private getClassEntries(): ClassEntry[]
+  {
+    this.classes = this.getClassesByWeek();
+    let result : ClassEntry[] = [];
+    for(let i = 0; i<this.classes.length;i=i+1)
+    {
+      let dates = this.classes[i].dateList;
+      if(!!dates)
+      {
+        for(let j = 0; j<dates.length;j=j+1)
+        {
+          result.push(this.constructClassEntry(dates[j],this.classes[i])!);
+        }
+      }
+    }
+
+    return result;
+  }
+
+  private constructClassEntry(schedule:Schedule, target : Class) : ClassEntry | undefined
+  {
+    let startTime = new Date(schedule.startTime);
+    let endTime = new Date(schedule.endTime);
+    if(this.dateManage.dateInWeek(startTime))
+    {
+      let result : ClassEntry = new ClassEntry(target.id,
+                                               target.name!,
+                                               new Date(startTime),
+                                               this.getDisplayTime(startTime),
+                                               this.getDisplayTime(endTime),
+                                               target.classroom!);
+
+      return result;
+    }
+    return undefined;
+
+  }
+
+  private getDisplayTime(date : Date)
+  {
+    return date.getHours() + ":" + date.getMinutes();
+  }
+
+
+  getClassDates(target:Class) : Date[]
+  {
+    let result : Date[] = [];
+    if(target.dateList !== undefined )
+    {
+      for(let i = 0; i<target.dateList.length; i++)
+      {
+        result.push(new Date(target.dateList[i].startTime));
+      }
+    }
+
+    return result;
   }
 
   getClassByID(target : number) : Class | null
   {
-    this.getMockClasses();
+    this.getClassesDB();
     for(let i : number = 0; i<this.classes.length; i=i+1)
     {
       if(this.classes[i].id == target)
@@ -49,50 +115,77 @@ export class ClassInfoService {
     return this.getClassByID(this.target);
   }
 
-  mockClasses(): Class[]
-  {
-    this.getMockClasses();
-    return this.classes;
-  }
-
   getClassesByWeek()
   {
     let result : Class[] = [];
 
     for(let i : number = 0;i<this.classes.length; i=i+1)
     {
-      if(this.dateManage.dateInWeek(this.classes[i].date))
+      if(this.dateManage.anyDateInWeek(this.getClassDates(this.classes[i])))
           result.push(this.classes[i]);
     }
+    //console.log(result);
     return result;
   }
 
-  getClassesByDay(day : number) : Class[]
+  getClassesByDay(entries : ClassEntry[],day : number) : ClassEntry[]
   {
-    let result : Class[] = [];
-    for(let i : number = 0;i<this.classes.length; i=i+1)
+    let result : ClassEntry[] = [];
+    for(let i : number = 0;i<entries.length; i=i+1)
     {
-      if(this.classes[i].date.getDay()==day)
-        result.push(this.classes[i]);
+      //console.log(entries[i].date.getDay() + " " + day);
+      if(entries[i].date.getDay() == day)
+        result.push(entries[i]);
     }
     return result;
   }
 
-  constructClassMatrix() : Class[][]
+  constructClassMatrix() : ClassEntry[][]
   {
-    let result : Class[][] = [];
+    this.classEntries = this.getClassEntries();
+    //console.log(this.classEntries);
+    let result : ClassEntry[][] = [];
     for(let i : number = 0;i<this.days.length; i=i+1)
     {
-      result.push(this.getClassesByDay(this.days[i]));
+      let entriesForDay = this.getClassesByDay(this.classEntries,this.days[i]);
+      result.push(entriesForDay);
     }
+    console.log(result);
 
     result = this.transposeMatrix(result);
+    result = this.deleteUndefinedRow(result);
+    
     return result;
   }
 
-  transposeMatrix(mat: Class[][])
+  transposeMatrix(matrix: ClassEntry[][]) : ClassEntry[][]
   {
-    return mat[0].map((_, colIndex) => mat.map(row => row[colIndex]));
+    let result:ClassEntry[][]=[];
+    for(let i=0;i<matrix.length;i++){
+      result.push([])
+      for(let j=0;j<matrix.length;j++){
+          result[i].push(matrix[j][i])
+      }
+    }
+    return result;
+  }
+
+  deleteUndefinedRow(matrix : ClassEntry[][]) : ClassEntry[][]
+  {
+    let result:ClassEntry[][]=[];
+    let count = 0
+    for(let i=0;i<matrix.length;i++){
+      for(let j=0;j<matrix.length;j++){
+        if(matrix[i][j]==undefined)
+          count=count+1;
+      }
+      if(count!=matrix[i].length)
+        result.push(matrix[i]);
+      count=0
+    }
+
+    return result;
+
   }
 
   getMockTeachers(): void {
@@ -104,4 +197,22 @@ export class ClassInfoService {
     this.classMock.getArraySections()
     .subscribe(sections => this.sections = sections);
   }
+
+    /*
+  private getMockClasses(): void {
+    this.classMock.getArrayClasses(3)
+    .subscribe(classes => this.classes = classes);
+  }
+  */
+}
+
+export class ClassEntry
+{
+  constructor(public id : number,
+              public name : string,
+              public date : Date,
+              public start : string,
+              public end : string,
+              public classroom : Classroom
+              ){}
 }

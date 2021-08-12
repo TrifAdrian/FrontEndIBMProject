@@ -1,10 +1,10 @@
-<div *ngIf="(role == 'Student' || role == null) && this.targetClass != null" class="classDetails">
+<div *ngIf="(role == 'Student' || role == null) &&
+            this.targetClass != null  " class="classDetails">
     <p>{{this.targetClass.name}}</p>
     <p>Year: {{this.targetClass.year}}</p>
     <p>Section: {{this.targetClass.section}}</p>
     <p>Teacher: {{this.targetClass.teacher}}</p>
-    <p>Capacity: {{this.targetClass.capacity}}</p>
-    <p>Date: {{this.targetClass.getDate()}}</p>
+    <p>Capacity: {{this.getCapacity()}}</p>
     <button type="submit">Reserve place</button>
 </div>
 

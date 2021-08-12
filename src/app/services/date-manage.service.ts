@@ -41,6 +41,33 @@ export class DateManageService {
     return 1;
   }
 
+  getMatchingDate(dates : Date[]) : Date | null
+  {
+    for(let i = 0 ; i<dates.length;i++)
+    {
+      if(this.dateInWeek(dates[i]))
+      {
+        return dates[i];
+      }
+    }
+
+    return null;
+
+    
+  }
+
+  anyDateInWeek(dates : Date[]) : boolean
+  {
+    for(let i = 0 ; i<dates.length;i++)
+    {
+      if(this.dateInWeek(dates[i]))
+      {
+        return true;
+      }
+    }
+    return false;
+  }
+
   dateInWeek(date: Date)
   {
     let afterSevenDays : Date = new Date(this.getDate());
