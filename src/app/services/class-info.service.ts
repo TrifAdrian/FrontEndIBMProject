@@ -150,11 +150,11 @@ export class ClassInfoService {
       let entriesForDay = this.getClassesByDay(this.classEntries,this.days[i]);
       result.push(entriesForDay);
     }
-    console.log(result);
+    //console.log(result);
 
     result = this.transposeMatrix(result);
     result = this.deleteUndefinedRow(result);
-    
+
     return result;
   }
 

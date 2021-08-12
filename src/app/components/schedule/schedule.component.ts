@@ -21,7 +21,7 @@ export class ScheduleComponent implements OnInit {
 
     this.refreshClasses();
 
-    console.log(this.classesMatrix);
+    //console.log(this.classesMatrix);
   }
   refreshDate() : void
   {
@@ -34,7 +34,7 @@ export class ScheduleComponent implements OnInit {
    this.classInfo.refreshClasses();
    this.classesMatrix = this.classInfo.constructClassMatrix();
   }
-  
+
   classesMatrix : ClassEntry[][]=[];
 
   date : Date|null = new Date();
@@ -48,7 +48,7 @@ export class ScheduleComponent implements OnInit {
     this.toggleService.toggleWindow(name);
     this.ngOnInit();
   }
-  
+
   displayClass(id : number) : void{
     this.classInfo.target=id;
     this.toggle("classInfo");
