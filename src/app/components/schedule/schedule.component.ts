@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ToolbarToggleService } from 'src/app/services/toolbar-toggle.service';
-import { Class } from 'src/app/services/class-mock.service';
-import { ClassInfoService } from 'src/app/services/class-info.service';
+import { ClassInfoService,ClassEntry } from 'src/app/services/class-info.service';
 import { DateManageService } from 'src/app/services/date-manage.service';
 @Component({
   selector: 'app-schedule',
@@ -21,8 +20,9 @@ export class ScheduleComponent implements OnInit {
     this.refreshDate();
 
     this.refreshClasses();
-  }
 
+    console.log(this.classesMatrix);
+  }
   refreshDate() : void
   {
     this.date = this.dateManage.getDate();
@@ -35,7 +35,7 @@ export class ScheduleComponent implements OnInit {
    this.classesMatrix = this.classInfo.constructClassMatrix();
   }
   
-  classesMatrix : Class[][]=[];
+  classesMatrix : ClassEntry[][]=[];
 
   date : Date|null = new Date();
   dateDisplay : string = "";
