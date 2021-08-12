@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ClassMockService,Class } from 'src/app/services/class-mock.service';
-import { ClassCreationComponent } from '../class-creation/class-creation.component';
+import { ClassEntry } from 'src/app/services/class-info.service';
+
 
 @Component({
   selector: 'app-schedule-entry',
@@ -9,7 +9,7 @@ import { ClassCreationComponent } from '../class-creation/class-creation.compone
 })
 export class ScheduleEntryComponent implements OnInit {
 
-  @Input() classroom : Class|null = null;
+  @Input() classroom : ClassEntry|null = null;
   start : string | undefined = "";
   end : string | undefined = "";
   name : string | undefined = "";
@@ -21,7 +21,7 @@ export class ScheduleEntryComponent implements OnInit {
     this.start=this.classroom?.start;
     this.end=this.classroom?.end;
     this.name=this.classroom?.name;
-    this.room=this.classroom?.classroom;
+    this.room=this.classroom?.classroom.name;
   }
 
 }
