@@ -19,14 +19,14 @@ export class ClassInfoService {
   public sections : string[] = [];
   public days:number[] = [1, 2, 3, 4, 5];
   public target : number = 0;
+  public classMatrix : ClassEntry[][] =[]
 
 
   constructor(private classMock : ClassMockService,
               private dateManage : DateManageService,
               private classService : ClassService) {
     this.refreshClasses();
-    this.getMockSections();
-    this.getMockTeachers();
+    this.classMatrix=this.constructClassMatrix();
   }
 
   public refreshClasses()
@@ -39,6 +39,7 @@ export class ClassInfoService {
   private getClassesDB(): void
   {
     this.classService.getClasses().subscribe(x => this.classes = x);
+    console.log(this.classes)
   }
 
   private getClassEntries(): ClassEntry[]

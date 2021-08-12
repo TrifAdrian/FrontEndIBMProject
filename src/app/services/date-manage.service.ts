@@ -7,12 +7,12 @@ export class DateManageService {
 
   constructor() {
     this.defaultDate.setDate(this.firstMonday);
-    this.firstMonday = this.findFirstMonday(this.defaultDate); 
+    this.firstMonday = this.findFirstMonday(this.defaultDate);
     this.defaultDate.setDate(this.firstMonday);
     this.saveToLocal(this.defaultDate);
    }
 
-  private firstMonday = 1; 
+  private firstMonday = 1;
   public defaultDate : Date = new Date();
 
   public refreshDate() : Date
@@ -36,7 +36,7 @@ export class DateManageService {
     for(;;date.setDate(date.getDate() + 1))
     {
       if(date.getDay()==dayNumber)
-        return date.getDate();
+        return date.getDate() + 7;
     }
     return 1;
   }
@@ -53,7 +53,7 @@ export class DateManageService {
 
     return null;
 
-    
+
   }
 
   anyDateInWeek(dates : Date[]) : boolean
@@ -89,17 +89,17 @@ export class DateManageService {
    nextWeek() : void{
     this.changeDateRefresh(this.defaultDate,7);
    }
-  
+
    changeDateRefresh(date : Date, daysChanged : number) : void
    {
      if(date!=null){
-       date.setDate(date.getDate()+daysChanged);  
-   
+       date.setDate(date.getDate()+daysChanged);
+
        this.saveToLocal(date);
       }
   }
 
-  
+
 
   saveToLocal(date : Date | null): void{
     if(date!=null){
@@ -109,7 +109,7 @@ export class DateManageService {
   }
 
   getSavedDate() : string {
-    
+
     if(localStorage.getItem("targetDate") != null)
        return localStorage.getItem("targetDate") as string;
     return "";
