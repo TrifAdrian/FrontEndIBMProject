@@ -5,10 +5,11 @@
     <p>Section: {{this.targetClass.section}}</p>
     <p>Teacher: {{this.targetClass.teacher}}</p>
     <p>Capacity: {{this.getCapacity()}}</p>
-    <button type="submit">Reserve place</button>
+    <button (click)="enrollStudent(this.targetClass.id)" type="submit">Enroll</button>
+
 </div>
 
 <app-class-creation *ngIf="(role == 'Teacher' || role == 'Admin') && this.targetClass != null"
- [purpose]="'editClass'" class="classEdit"></app-class-creation>
+  [classEditId]="this.targetClass.id"  [purpose]="'editClass'" class="classEdit"></app-class-creation>
 
 

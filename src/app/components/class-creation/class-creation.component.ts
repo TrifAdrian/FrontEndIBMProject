@@ -23,6 +23,8 @@ import {UserService} from "../../services/user/user.service";
 export class ClassCreationComponent implements OnInit {
 
   @Input() purpose : string|null = null;
+  @Input() classEditId !: number;
+  @Input() deletion !: boolean
   //targetClass : Class|null = null;
 
   inputName : string = "";
@@ -72,12 +74,16 @@ export class ClassCreationComponent implements OnInit {
         teacherId : this.inputTeacher,
         classroomId : parseInt(this.inputClassroom)
       }
+      if(this.purpose == "editClass")
+        this.classService.editClass(this.classEditId,this.createClass).subscribe();
+      else
+        this.classService.createClass(this.createClass).subscribe();
 
-      this.classService.createClass(this.createClass).subscribe();
       console.log(this.createClass);
     }
 
     this.formSubmitted = ! this.formSubmitted;
+
   }
 
   private buildSchedule() : Schedule
@@ -99,6 +105,12 @@ export class ClassCreationComponent implements OnInit {
     schedule.endTime=date.toISOString();
 
     return schedule;
+  }
+
+  deleteClass(): void
+  {
+    this.classService.deleteClass(this.classEditId).subscribe();
+    // window.alert("deleted")
   }
 
 
