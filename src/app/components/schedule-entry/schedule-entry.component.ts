@@ -14,6 +14,7 @@ export class ScheduleEntryComponent implements OnInit {
   end : string | undefined = "";
   name : string | undefined = "";
   room : string | undefined = "";
+  teacher !: string
 
   constructor() {}
 

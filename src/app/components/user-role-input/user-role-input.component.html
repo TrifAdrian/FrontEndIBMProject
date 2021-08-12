@@ -11,7 +11,6 @@
 
       <label for="userDropdown" style="margin-left: 6px">Select user:</label>
       <select [(ngModel)] = "inputUser" required name="inputUser" id="userDropdown">
-<!--        <option value="">Select User</option>-->
         <option *ngFor="let element of users" [value]="element.id">{{element.name}}-{{element.role}}</option>
       </select> <br><br>
 
