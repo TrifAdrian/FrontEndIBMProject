@@ -71,7 +71,8 @@ export class ClassInfoService {
                                                new Date(startTime),
                                                this.getDisplayTime(startTime),
                                                this.getDisplayTime(endTime),
-                                               target.classroom!);
+                                               target.classroom!,
+                                              target.teacher!);
 
       return result;
     }
@@ -81,7 +82,7 @@ export class ClassInfoService {
 
   private getDisplayTime(date : Date)
   {
-    return date.getHours() + ":" + date.getMinutes();
+    return date.getUTCHours() + ":" + date.getUTCMinutes();
   }
 
 
@@ -213,6 +214,8 @@ export class ClassEntry
               public date : Date,
               public start : string,
               public end : string,
-              public classroom : Classroom
-              ){}
+              public classroom : Classroom,
+              public teacherName:string
+  ){}
+
 }
